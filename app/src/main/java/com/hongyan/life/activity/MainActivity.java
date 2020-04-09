@@ -1,9 +1,10 @@
-package com.hongyan.life;
+package com.hongyan.life.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 
-public class MainActivity extends Activity {
+import com.hongyan.life.R;
+
+public class MainActivity extends BaseActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
