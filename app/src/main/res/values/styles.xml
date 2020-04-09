@@ -1,0 +1,12 @@
+<resources>
+
+    <style name="AppTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowFullscreen">false</item>
+        <item name="android:background">@drawable/splash</item>
+    </style>
+
+    <style name="ActivityTheme" parent="@android:style/Theme.Light.NoTitleBar">
+        <item name="android:windowFullscreen">false</item>
+    </style>
+
+</resources>
