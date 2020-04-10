@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 public class TranslateBean {
 
-    public String errorCode;
+    public int errorCode;
     public String query;
-    public String translation;
+    public String[] translation;
     public Basic basic;
     public ArrayList<Web> web;
 
@@ -14,11 +14,11 @@ public class TranslateBean {
         public String us_phonetic;
         public String phonetic;
         public String uk_phonetic;
-        public String explains;
+        public String[] explains;
     }
 
     class Web {
-        public String explains;
-        public String value;
+        public String[] value;
+        public String key;
     }
 }
