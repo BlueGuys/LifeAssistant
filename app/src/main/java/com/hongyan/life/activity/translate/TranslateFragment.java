@@ -95,7 +95,7 @@ public class TranslateFragment extends BaseFragment {
 
             @Override
             public void failed(int httpStatusCode, String error) {
-                tvResultA.setText(error);
+//                tvResultA.setText(error);
                 String errorMsg = "网络错误  [httpStatusCode" + httpStatusCode + "   error:" + error + "]";
             }
         });
