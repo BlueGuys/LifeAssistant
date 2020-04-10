@@ -310,7 +310,7 @@
 
 
     <color name="appColor">#dba965</color>
-    <color name="appColorPositive">#dba965</color>
+    <color name="appColorPositive">#0078ff</color>
     <color name="appColorNegative">#A9A9A9</color>
     <color name="appBackground">#eff2f6</color>
     <color name="fontPositive">#66573e</color>

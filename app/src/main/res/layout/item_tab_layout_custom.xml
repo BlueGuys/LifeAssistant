@@ -7,8 +7,8 @@
 
     <ImageView
         android:id="@+id/logo"
-        android:layout_width="@dimen/ds30"
-        android:layout_height="@dimen/ds30"
+        android:layout_width="@dimen/ds35"
+        android:layout_height="@dimen/ds35"
         android:paddingTop="@dimen/ds10"
         android:paddingBottom="@dimen/ds10"/>
 
@@ -16,6 +16,6 @@
         android:id="@+id/tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="11dp"
+        android:textSize="9dp"
         android:text="hello"/>
 </LinearLayout>

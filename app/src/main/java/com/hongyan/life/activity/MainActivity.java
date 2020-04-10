@@ -56,27 +56,27 @@ public class MainActivity extends BaseActivity {
         SubPage homePage = new SubPage();
         homePage.fragment = new HomeFragment();
         homePage.text = "首页";
-        homePage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
+        homePage.drawable = new int[]{R.drawable.icon_home_s, R.drawable.icon_home_n};
 
         SubPage billPage = new SubPage();
         billPage.fragment = new BillFragment();
         billPage.text = "记帐";
-        billPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
+        billPage.drawable = new int[]{R.drawable.icon_account_s, R.drawable.icon_account_n};
 
         SubPage sharesPage = new SubPage();
         sharesPage.fragment = new SharesFragment();
         sharesPage.text = "股票";
-        sharesPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
+        sharesPage.drawable = new int[]{R.drawable.icon_stock_s, R.drawable.icon_stock_n};
 
         SubPage transPage = new SubPage();
         transPage.fragment = new TranslateFragment();
         transPage.text = "翻译";
-        transPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
+        transPage.drawable = new int[]{R.drawable.icon_translation_s, R.drawable.icon_translation_n};
 
         SubPage calcPage = new SubPage();
         calcPage.fragment = new CalcFragment();
         calcPage.text = "计算器";
-        calcPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
+        calcPage.drawable = new int[]{R.drawable.icon_calculator_s, R.drawable.icon_calculator_n};
 
         list.add(homePage);
         list.add(billPage);

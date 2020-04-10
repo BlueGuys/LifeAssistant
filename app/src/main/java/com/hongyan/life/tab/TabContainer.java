@@ -77,7 +77,7 @@ public class TabContainer extends LinearLayout {
         LinearLayout tabView = new LinearLayout(mContext);
         tabView.setOrientation(VERTICAL);
         tabView.setGravity(Gravity.CENTER);
-        tabView.setPadding(0, 20, 0, 20);
+        tabView.setPadding(0, 10, 0, 10);
         tabView.setLayoutParams(new LayoutParams(0, ViewGroup.LayoutParams.MATCH_PARENT, 1.0f));
 
         ImageView image = new ImageView(mContext);
