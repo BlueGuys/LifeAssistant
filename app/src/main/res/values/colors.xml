@@ -318,4 +318,5 @@
     <color name="fontRed">#ff0000</color>
     <color name="fontGray">#555555</color>
     <color name="appLine">#dddddd</color>
+    <color name="home_weather_text">#ffffff</color>
 </resources>
