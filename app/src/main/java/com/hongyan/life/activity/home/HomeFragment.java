@@ -47,9 +47,12 @@ public class HomeFragment extends BaseFragment {
         weatherCityLayout=view.findViewById(R.id.fragment_home_city_layout);
         weatherCityName = view.findViewById(R.id.fragment_home_city_name);
         String name = weatherCityName.getText().toString();
+
+
+
+
+
         searcheCityWeather(name);
-
-
 
     }
 
@@ -68,6 +71,10 @@ public class HomeFragment extends BaseFragment {
 //                tvResult.setText(response);
                 WeatherNow weatherNow = GsonUtils.gsonResolve(response, WeatherNow.class);
                 Log.d(TAG,"Weather info :"+weatherNow.toString());
+                if (weatherNow==null){
+                    return;
+                }
+                int imgId = getWeatherImg(weatherNow.getWea_img());
 
 
             }
@@ -80,10 +87,36 @@ public class HomeFragment extends BaseFragment {
             }
 
         });
-
-
-
     }
+
+    /**
+     * xue、lei、shachen、wu、bingbao、yun、yu、yin、qing
+     * @param wea_img
+     */
+    private int getWeatherImg(String wea_img){
+        switch (wea_img){
+            case "xue":
+                return R.drawable.xue;
+            case "lei":
+                return R.drawable.lei;
+            case "shachen":
+                return R.drawable.shachen;
+            case "wu":
+                return R.drawable.wu;
+            case "bingbao":
+                return R.drawable.bingbao;
+            case "yun":
+                return R.drawable.yun;
+            case "yu":
+                return R.drawable.yu;
+            case "yin":
+                return R.drawable.yin;
+            case "qing":
+                return R.drawable.qing;
+            default: return R.drawable.qing;
+        }
+    }
+
 
     @Override
     public void onDestroyView() {
