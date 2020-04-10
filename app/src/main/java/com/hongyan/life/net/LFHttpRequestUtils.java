@@ -100,7 +100,7 @@ public class LFHttpRequestUtils {
 
                     OutputStream outStream = conn.getOutputStream();
                     outStream.write(data);
-                    outStream.write(fileByte[0]);
+//                    outStream.write(fileByte[0]);
                     outStream.write(LINEND.getBytes());
                     // 请求结束标志
                     byte[] end_data = (PREFIX + BOUNDARY + PREFIX + LINEND).getBytes();
