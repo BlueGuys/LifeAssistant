@@ -1,4 +1,4 @@
-package com.hongyan.life.activity;
+package com.hongyan.life.activity.bill;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,15 +7,16 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.hongyan.life.R;
+import com.hongyan.life.activity.BaseFragment;
 
-public class MeFragment extends BaseFragment {
+public class BillFragment extends BaseFragment {
 
     private View view;
     private LinearLayout roorLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_me, container, false);
+        view = inflater.inflate(R.layout.fragment_bill, container, false);
         roorLayout = view.findViewById(R.id.linearLayout);
         return view;
     }

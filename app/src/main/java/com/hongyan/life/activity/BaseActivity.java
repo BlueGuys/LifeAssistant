@@ -23,7 +23,7 @@ public abstract class BaseActivity extends FragmentActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);//限制为竖屏
-        configTranslucentStatuBar();
+//        configTranslucentStatuBar();
     }
 
     /**
@@ -46,7 +46,7 @@ public abstract class BaseActivity extends FragmentActivity {
      * 设置状态栏的颜色
      */
     public int setStatusBarColor() {
-        return 0xffdba965;
+        return 0xff0078ff;
     }
 
     /**

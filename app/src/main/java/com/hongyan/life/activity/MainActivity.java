@@ -3,7 +3,11 @@ package com.hongyan.life.activity;
 import android.os.Bundle;
 
 import com.hongyan.life.R;
-import com.hongyan.life.fragment.CalculatorFragment;
+import com.hongyan.life.activity.bill.BillFragment;
+import com.hongyan.life.activity.calc.CalcFragment;
+import com.hongyan.life.activity.home.HomeFragment;
+import com.hongyan.life.activity.shares.SharesFragment;
+import com.hongyan.life.activity.translate.TranslateFragment;
 import com.hongyan.life.tab.SubPage;
 import com.hongyan.life.tab.TabContainer;
 
@@ -49,32 +53,42 @@ public class MainActivity extends BaseActivity {
         });
 
         ArrayList<SubPage> list = new ArrayList<>();
-        SubPage discoverPage = new SubPage();
-        discoverPage.fragment = new MeFragment();
-        discoverPage.text = "发现";
-        discoverPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
+        SubPage homePage = new SubPage();
+        homePage.fragment = new HomeFragment();
+        homePage.text = "首页";
+        homePage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
 
-        SubPage servicePage = new SubPage();
-        servicePage.fragment = new MeFragment();
-        servicePage.text = "服务";
-        servicePage.drawable = new int[]{R.drawable.icon_service_s, R.drawable.icon_service_n};
+        SubPage billPage = new SubPage();
+        billPage.fragment = new BillFragment();
+        billPage.text = "记帐";
+        billPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
 
-        SubPage mePage = new SubPage();
-        mePage.fragment = new MeFragment();
-        mePage.text = "我的";
-        mePage.drawable = new int[]{R.drawable.icon_me_s, R.drawable.icon_me_n};
+        SubPage sharesPage = new SubPage();
+        sharesPage.fragment = new SharesFragment();
+        sharesPage.text = "股票";
+        sharesPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
 
+        SubPage transPage = new SubPage();
+        transPage.fragment = new TranslateFragment();
+        transPage.text = "翻译";
+        transPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
 
-        SubPage calcalatorPage = new SubPage();
-        calcalatorPage.fragment = new CalculatorFragment();
-        calcalatorPage.text = "计算器";
-        calcalatorPage.drawable = new int[]{R.drawable.icon_me_s, R.drawable.icon_me_n};
+        SubPage calcPage = new SubPage();
+        calcPage.fragment = new CalcFragment();
+        calcPage.text = "计算器";
+        calcPage.drawable = new int[]{R.drawable.icon_discover_s, R.drawable.icon_discover_n};
 
-        list.add(discoverPage);
-        list.add(servicePage);
-        list.add(mePage);
-        list.add(calcalatorPage);
+        list.add(homePage);
+        list.add(billPage);
+        list.add(sharesPage);
+        list.add(transPage);
+        list.add(calcPage);
         addSubPage(list);
+    }
+
+    @Override
+    public int setStatusBarColor() {
+        return 0xffffff;
     }
 
     public void addSubPage(ArrayList<SubPage> list) {
