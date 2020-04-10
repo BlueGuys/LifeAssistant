@@ -3,6 +3,7 @@ package com.hongyan.life.activity;
 import android.os.Bundle;
 
 import com.hongyan.life.R;
+import com.hongyan.life.fragment.CalculatorFragment;
 import com.hongyan.life.tab.SubPage;
 import com.hongyan.life.tab.TabContainer;
 
@@ -63,9 +64,16 @@ public class MainActivity extends BaseActivity {
         mePage.text = "我的";
         mePage.drawable = new int[]{R.drawable.icon_me_s, R.drawable.icon_me_n};
 
+
+        SubPage calcalatorPage = new SubPage();
+        calcalatorPage.fragment = new CalculatorFragment();
+        calcalatorPage.text = "计算器";
+        calcalatorPage.drawable = new int[]{R.drawable.icon_me_s, R.drawable.icon_me_n};
+
         list.add(discoverPage);
         list.add(servicePage);
         list.add(mePage);
+        list.add(calcalatorPage);
         addSubPage(list);
     }
 
