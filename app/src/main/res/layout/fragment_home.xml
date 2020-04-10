@@ -33,11 +33,87 @@
         </LinearLayout>
 
 
+        <FrameLayout
+            android:layout_marginLeft="15dp"
+            android:id="@+id/fragment_home_weather_img_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/fragment_home_city_layout">
+
+            <ImageView
+                android:id="@+id/fragment_home_weather_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@drawable/qing" />
+
+        </FrameLayout>
+
+
+        <TextView
+            android:id="@+id/fragment_home_weather_tips"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_below="@+id/fragment_home_weather_img_layout"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical"
+            android:text="tips:"
+            android:textColor="@color/home_weather_text"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/fragment_home_weather_air_level"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/fragment_home_weather_tips"
+            android:layout_below="@+id/fragment_home_city_layout"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp"
+            android:gravity="center_vertical"
+            android:text="优"
+            android:textColor="@color/home_weather_text"
+            android:textSize="35dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_above="@+id/fragment_home_weather_tips"
+            android:layout_below="@+id/fragment_home_city_layout"
+            android:layout_marginRight="15dp"
+            android:layout_toLeftOf="@+id/fragment_home_weather_air_level"
+            android:layout_toRightOf="@+id/fragment_home_weather_img_layout"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/fragment_home_weather_temp"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:text="0℃"
+                android:textColor="@color/home_weather_text"
+                android:textSize="30sp" />
+
+            <TextView
+                android:id="@+id/fragment_home_weather_temp12"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="0℃/7℃"
+                android:textColor="@color/home_weather_text"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+
     </RelativeLayout>
+
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="请求"/>
+        android:text="请求" />
 
 </LinearLayout>

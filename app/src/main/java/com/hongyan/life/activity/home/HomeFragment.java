@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -37,6 +38,8 @@ public class HomeFragment extends BaseFragment {
     TextView weatherCityName;
 
     private Button button;
+    private ImageView weatherImg;
+    private TextView tipsTv,airLevelTv,tempTv,temp12Tv;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -60,6 +63,13 @@ public class HomeFragment extends BaseFragment {
     private void initWeather() {
         weatherCityLayout=view.findViewById(R.id.fragment_home_city_layout);
         weatherCityName = view.findViewById(R.id.fragment_home_city_name);
+        weatherImg=view.findViewById(R.id.fragment_home_weather_img);
+        tipsTv=view.findViewById(R.id.fragment_home_weather_tips);
+        airLevelTv=view.findViewById(R.id.fragment_home_weather_air_level);
+        tempTv=view.findViewById(R.id.fragment_home_weather_temp);
+        temp12Tv=view.findViewById(R.id.fragment_home_weather_temp12);
+
+
         String name = weatherCityName.getText().toString();
         searcheCityWeather(name);
     }
@@ -67,7 +77,7 @@ public class HomeFragment extends BaseFragment {
     private void searcheCityWeather(String name) {
         String url = baseWeatherUrl;
         try {
-            url = baseWeatherUrl+ URLEncoder.encode(name,"UTF8");
+            url = baseWeatherUrl+"&city="+ URLEncoder.encode(name,"UTF8");
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -82,11 +92,50 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             public void failed(int httpStatusCode, String error) {
-                Log.d(TAG,"Weather info :"+ error);
+                Log.d(TAG,httpStatusCode+"error :"+ error);
             }
         });
+        String json = "{\"cityid\":\"101010100\",\"date\":\"2020-04-11\",\"week\":\"\\u661f\\u671f\\u516d\",\"update_time\":\"2020-04-11 01:41:25\",\"city\":\"\\u5317\\u4eac\",\"cityEn\":\"beijing\",\"country\":\"\\u4e2d\\u56fd\",\"countryEn\":\"China\",\"wea\":\"\\u6674\",\"wea_img\":\"qing\",\"tem\":\"8\",\"tem1\":\"17\",\"tem2\":\"6\",\"win\":\"\\u897f\\u5357\\u98ce\",\"win_speed\":\"1\\u7ea7\",\"win_meter\":\"\\u5c0f\\u4e8e12km\\/h\",\"humidity\":\"51%\",\"visibility\":\"13.53km\",\"pressure\":\"1022\",\"air\":\"53\",\"air_pm25\":\"53\",\"air_level\":\"\\u826f\",\"air_tips\":\"\\u7a7a\\u6c14\\u597d\\uff0c\\u53ef\\u4ee5\\u5916\\u51fa\\u6d3b\\u52a8\\uff0c\\u9664\\u6781\\u5c11\\u6570\\u5bf9\\u6c61\\u67d3\\u7269\\u7279\\u522b\\u654f\\u611f\\u7684\\u4eba\\u7fa4\\u4ee5\\u5916\\uff0c\\u5bf9\\u516c\\u4f17\\u6ca1\\u6709\\u5371\\u5bb3\\uff01\",\"alarm\":{\"alarm_type\":\"\",\"alarm_level\":\"\",\"alarm_content\":\"\"}}";
+        WeatherNow weatherNow = GsonUtils.gsonResolve(json, WeatherNow.class);
+        String wea_img = weatherNow.getWea_img();
+        weatherImg.setImageResource(getImageIdByWea(wea_img));
+        tipsTv.setText(weatherNow.getAir_tips());
+        airLevelTv.setText(weatherNow.getAir_level());
+        tempTv.setText(weatherNow.getTem()+"℃");
+        temp12Tv.setText(weatherNow.getTem1()+" / "+weatherNow.getTem2());
+    }
+
+    /**
+     * xue、lei、shachen、wu、bingbao、yun、yu、yin、qing
+     * @param wea_img
+     * @return
+     */
+    private int getImageIdByWea(String wea_img) {
+        switch (wea_img){
+            case "xue":
+                return R.drawable.xue;
+            case "lei":
+                return R.drawable.lei;
+            case "shachen":
+                return R.drawable.shachen;
+            case "wu":
+                return R.drawable.wu;
+            case "bingbao":
+                return R.drawable.bingbao;
+            case "yun":
+                return R.drawable.yun;
+            case "yu":
+                return R.drawable.yu;
+            case "yin":
+                return R.drawable.yin;
+            case "qing":
+                return R.drawable.qing;
+           default:
+                return R.drawable.qing;
+        }
 
     }
+
 
     @Override
     public void onDestroyView() {
