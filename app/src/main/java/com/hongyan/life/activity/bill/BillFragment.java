@@ -26,7 +26,6 @@ public class BillFragment extends BaseFragment {
     private static final int REQUEST_CODE = 1000;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_bill, container, false);
@@ -68,7 +67,7 @@ public class BillFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == REQUEST_CODE) {
+        if (requestCode == REQUEST_CODE && resultCode == 300) {
             String amount = data.getStringExtra("amount");
             int category = data.getIntExtra("category", 1);
             String remark = data.getStringExtra("remark");

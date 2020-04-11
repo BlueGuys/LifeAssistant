@@ -88,7 +88,7 @@ public class Category {
                 return c1.icon;
             }
         }
-        for (Category c2 : incomeCategoryList) {
+        for (Category c2 : expandCategoryList) {
             if (c2.type == id) {
                 return c2.icon;
             }
@@ -102,7 +102,7 @@ public class Category {
                 return c1.desc;
             }
         }
-        for (Category c2 : incomeCategoryList) {
+        for (Category c2 : expandCategoryList) {
             if (c2.type == id) {
                 return c2.desc;
             }

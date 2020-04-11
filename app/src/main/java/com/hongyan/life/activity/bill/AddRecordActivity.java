@@ -77,7 +77,7 @@ public class AddRecordActivity extends BaseActivity {
 
     private void showEditDialog() {
         //设置样式
-        MyMiddleDialog myMiddleDialog = new MyMiddleDialog(this, R.style.MyMiddleDialogStyle);
+        final MyMiddleDialog myMiddleDialog = new MyMiddleDialog(this, R.style.MyMiddleDialogStyle);
         Window window = myMiddleDialog.getWindow();
         //设置边框距离
         window.getDecorView().setPadding(0, 0, 0, 0);
@@ -95,6 +95,7 @@ public class AddRecordActivity extends BaseActivity {
         myMiddleDialog.setListener(new MyMiddleDialog.OnInputListener() {
             @Override
             public void callBack(String amount) {
+                myMiddleDialog.dismiss();
                 commit(amount);
             }
         });
@@ -110,7 +111,7 @@ public class AddRecordActivity extends BaseActivity {
         intent.putExtra("category", categoryID);
         intent.putExtra("remark", remark);
         intent.putExtra("type", type);
-        setResult(1002, intent);
+        setResult(300, intent);
         finish();
     }
 
