@@ -65,16 +65,20 @@ public class HomeFragment extends BaseFragment {
         airLevelTv=view.findViewById(R.id.fragment_home_weather_air_level);
         tempTv=view.findViewById(R.id.fragment_home_weather_temp);
         temp12Tv=view.findViewById(R.id.fragment_home_weather_temp12);
-        String name = weatherCityName.getText().toString();
-        requestWeather(name);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        String name = weatherCityName.getText().toString();
+//        requestWeather(name);
+    }
 
     private void requestWeather(String name) {
         String url = baseWeatherUrl;
         try {
             url = baseWeatherUrl+"&city="+ URLEncoder.encode(name,"UTF8");
-        } catch (UnsupportedEncodingException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         Log.d(TAG,"url:"+url);
