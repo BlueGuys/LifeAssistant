@@ -30,8 +30,8 @@ public class BillUtils {
 
 
     public static void init() {
-        categoryList.add(new Category(Category.TYPE_0, "餐饮"));
-        categoryList.add(new Category(Category.TYPE_0, "烟酒"));
+//        categoryList.add(new Category(Category.TYPE_0, "餐饮"));
+//        categoryList.add(new Category(Category.TYPE_0, "烟酒"));
     }
 
 

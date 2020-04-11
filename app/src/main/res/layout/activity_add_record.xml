@@ -39,11 +39,17 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:padding="@dimen/ds30">
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ds50"
+            android:layout_height="@dimen/ds70"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
             android:text="收入项目" />
 
         <GridView
@@ -54,7 +60,12 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="@dimen/ds50"
+            android:layout_height="@dimen/ds70"
+            android:layout_marginTop="@dimen/ds30"
+            android:textSize="14sp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:gravity="center_vertical"
             android:text="支出项目" />
 
         <GridView
