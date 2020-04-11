@@ -4,10 +4,64 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_commit"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="完成"/>
+        android:layout_height="@dimen/ds100"
+        android:background="@color/appColorPositive">
+
+        <ImageView
+            android:id="@+id/image_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_arrow_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="记一笔"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/btn_commit"
+            android:layout_width="@dimen/ds80"
+            android:layout_height="@dimen/ds80"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/ds50"
+            android:src="@drawable/icon_service_s" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds50"
+            android:text="收入项目" />
+
+        <GridView
+            android:id="@+id/grid_income"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numColumns="5" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ds50"
+            android:text="支出项目" />
+
+        <GridView
+            android:id="@+id/grid_expend"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:numColumns="5" />
+    </LinearLayout>
 
 </LinearLayout>

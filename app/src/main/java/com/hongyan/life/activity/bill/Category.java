@@ -1,5 +1,7 @@
 package com.hongyan.life.activity.bill;
 
+import java.util.ArrayList;
+
 public class Category {
 
     /**
@@ -38,4 +40,17 @@ public class Category {
         this.type = type;
         this.desc = desc;
     }
+
+
+    public static ArrayList<Category> getIncomeCategrays(){
+        ArrayList<Category> categories = new ArrayList<>();
+        categories.add(new Category(1, "哈哈哈"));
+        categories.add(new Category(1, "哈哈哈"));
+        categories.add(new Category(1, "哈哈哈"));
+        return categories;
+    }
+
+
+
+
 }
