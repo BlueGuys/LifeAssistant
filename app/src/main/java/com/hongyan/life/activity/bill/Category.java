@@ -45,23 +45,38 @@ public class Category {
         this.icon = icon;
     }
 
+    private static ArrayList<Category> incomeCategoryList = new ArrayList<>();
+    private static ArrayList<Category> expandCategoryList = new ArrayList<>();
+
+    public static void init() {
+        incomeCategoryList.add(new Category(1, "工资", R.drawable.ic_launcher));
+        incomeCategoryList.add(new Category(2, "股票", R.drawable.ic_launcher));
+        incomeCategoryList.add(new Category(2, "股票", R.drawable.ic_launcher));
+        expandCategoryList.add(new Category(2, "股票", R.drawable.ic_launcher));
+        expandCategoryList.add(new Category(2, "股票", R.drawable.ic_launcher));
+        expandCategoryList.add(new Category(2, "股票", R.drawable.ic_launcher));
+    }
 
     public static ArrayList<Category> getIncomeCategoryList() {
-        ArrayList<Category> categories = new ArrayList<>();
-        categories.add(new Category(1, "工资", R.drawable.ic_launcher));
-        categories.add(new Category(2, "股票", R.drawable.ic_launcher));
-        categories.add(new Category(2, "股票", R.drawable.ic_launcher));
-        categories.add(new Category(2, "股票", R.drawable.ic_launcher));
-        categories.add(new Category(2, "股票", R.drawable.ic_launcher));
-        categories.add(new Category(2, "股票", R.drawable.ic_launcher));
-        categories.add(new Category(2, "股票", R.drawable.ic_launcher));
-        return categories;
+        return incomeCategoryList;
     }
 
     public static ArrayList<Category> getExpandCategoryList() {
-        ArrayList<Category> categories = new ArrayList<>();
-        categories.add(new Category(1, "哈哈哈", R.drawable.ic_launcher));
-        return categories;
+        return expandCategoryList;
+    }
+
+    public static String getDescById(int id) {
+        for (Category c1 : incomeCategoryList) {
+            if (c1.type == id) {
+                return c1.desc;
+            }
+        }
+        for (Category c2 : incomeCategoryList) {
+            if (c2.type == id) {
+                return c2.desc;
+            }
+        }
+        return "";
     }
 
 }

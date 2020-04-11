@@ -74,9 +74,8 @@ public class BillAdapter extends BaseAdapter {
         ImageView iamgeIcon = convertView.findViewById(R.id.icon);
         TextView tvTitle = convertView.findViewById(R.id.tv_title);
         TextView tvAmount = convertView.findViewById(R.id.tv_amount);
-        tvTitle.setText("草啊");
+        tvTitle.setText(Category.getDescById(record.type));
         tvAmount.setText(String.valueOf(record.amount));
-
         return convertView;
     }
 }
