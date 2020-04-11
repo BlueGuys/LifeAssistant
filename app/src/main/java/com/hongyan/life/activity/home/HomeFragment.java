@@ -67,7 +67,6 @@ public class HomeFragment extends BaseFragment {
         temp12Tv=view.findViewById(R.id.fragment_home_weather_temp12);
         String name = weatherCityName.getText().toString();
         requestWeather(name);
-
     }
 
 
@@ -86,14 +85,17 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void completed(String response) {
                 Log.d(TAG,"Weather info :"+ response);
-                String json = response;
-                WeatherNow weatherNow = GsonUtils.gsonResolve(json, WeatherNow.class);
-                String wea_img = weatherNow.getWea_img();
-                weatherImg.setImageResource(getImageIdByWea(wea_img));
-                tipsTv.setText(weatherNow.getAir_tips());
-                airLevelTv.setText(weatherNow.getAir_level());
-                tempTv.setText(weatherNow.getTem()+"℃");
-                temp12Tv.setText(weatherNow.getTem1()+" / "+weatherNow.getTem2());
+                try{
+                    String json = response;
+                    WeatherNow weatherNow = GsonUtils.gsonResolve(json, WeatherNow.class);
+                    String wea_img = weatherNow.getWea_img();
+                    weatherImg.setImageResource(getImageIdByWea(wea_img));
+                    tipsTv.setText(weatherNow.getAir_tips());
+                    airLevelTv.setText(weatherNow.getAir_level());
+                    tempTv.setText(weatherNow.getTem()+"℃");
+                    temp12Tv.setText(weatherNow.getTem1()+" / "+weatherNow.getTem2());
+                }catch (Exception e){
+                }
             }
 
             @Override
