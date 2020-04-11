@@ -3,6 +3,7 @@ package com.hongyan.life.utils;
 import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
+import android.util.Log;
 
 import com.hongyan.life.MyApplication;
 import com.hongyan.life.activity.bill.Category;
@@ -14,6 +15,8 @@ import org.greenrobot.greendao.query.QueryBuilder;
 import org.greenrobot.greendao.query.WhereCondition;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -21,6 +24,7 @@ import java.util.List;
  */
 public class BillUtils {
 
+    private static final String TAG="BillUtils";
 
     public static ArrayList<Category> categoryList = new ArrayList<>();
 
@@ -76,13 +80,51 @@ public class BillUtils {
     }
 
     /**
-     * TODO 本月
+     *
      * @return
      */
     public static List<Record> getRecordListMonth(int type){
+
+        long startTime = DateUtil.getBeginDayOfMonth().getTime();
+        long endTime = DateUtil.getEndDayOfMonth().getTime();
+        Log.d(TAG,startTime+"--"+endTime);
         RecordDao recordDao = MyApplication.getDaoSession().getRecordDao();
-        List<Record> list = recordDao.queryBuilder().where(RecordDao.Properties.Type.eq(type)).list();
-        return null;
+        List<Record> list = recordDao.queryBuilder().
+                where(RecordDao.Properties.Type.eq(type),RecordDao.Properties.TimeStap.between(startTime,endTime))
+                .list();
+        return list;
+    }
+
+
+    public static float getMonthRecord(int type){
+        float sum = 0;
+        List<Record> recordListMonth = getRecordListMonth(type);
+        for (Record r:recordListMonth){
+            sum+=r.getAmount();
+        }
+        return sum;
+    }
+
+
+    public static List<Record> getRecordListWeek(int type){
+        long startTime = DateUtil.getBeginDayOfWeek().getTime();
+        long endTime = DateUtil.getEndDayOfWeek().getTime();
+        Log.d(TAG,startTime+"--"+endTime);
+
+        RecordDao recordDao = MyApplication.getDaoSession().getRecordDao();
+        List<Record> list = recordDao.queryBuilder().
+                where(RecordDao.Properties.Type.eq(type),RecordDao.Properties.TimeStap.between(startTime,endTime))
+                .list();
+        return list;
+    }
+
+    public static float getWeekRecord(int type){
+        float sum = 0;
+        List<Record> recordListMonth = getRecordListWeek(type);
+        for (Record r:recordListMonth){
+            sum+=r.getAmount();
+        }
+        return sum;
     }
 
 
@@ -103,6 +145,10 @@ public class BillUtils {
     }
 
 
+    public static List<Record> getAll(){
+        List<Record> records = MyApplication.getDaoSession().getRecordDao().loadAll();
+        return records;
+    }
 
 
 
