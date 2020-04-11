@@ -17,7 +17,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/ds60">
+                android:layout_height="@dimen/ds70">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -25,6 +25,15 @@
                     android:layout_centerInParent="true"
                     android:text="记帐"
                     android:textColor="@color/white" />
+
+                <ImageView
+                    android:id="@+id/btn_analysis"
+                    android:layout_width="@dimen/ds80"
+                    android:layout_height="@dimen/ds80"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginRight="@dimen/ds50"
+                    android:layout_centerVertical="true"
+                    android:src="@drawable/icon_service_s" />
             </RelativeLayout>
 
             <RelativeLayout

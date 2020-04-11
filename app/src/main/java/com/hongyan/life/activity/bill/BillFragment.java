@@ -21,6 +21,7 @@ public class BillFragment extends BaseFragment {
     private ListView listView;
     private BillAdapter mAdapter;
     private ImageView btnAdd;
+    private ImageView btnAnalysis;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class BillFragment extends BaseFragment {
 
         listView = view.findViewById(R.id.bill_listView);
         btnAdd = view.findViewById(R.id.btn_add);
+        btnAnalysis = view.findViewById(R.id.btn_analysis);
         mAdapter = new BillAdapter(getContext());
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
@@ -37,6 +39,14 @@ public class BillFragment extends BaseFragment {
                 startActivityForResult(intent, 1000);
             }
         });
+        btnAnalysis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AnalysisActivity.class);
+                startActivity(intent);
+            }
+        });
+
         listView.setAdapter(mAdapter);
         notifyData();
         return view;

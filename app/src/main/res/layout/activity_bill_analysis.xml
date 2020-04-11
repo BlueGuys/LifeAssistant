@@ -2,11 +2,27 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
-    <com.hongyan.life.activity.bill.BillHeadView
-        android:id="@+id/headView"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ds100" />
+        android:layout_height="@dimen/ds100"
+        android:background="@color/appColorPositive">
+
+        <ImageView
+            android:id="@+id/image_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_arrow_back" />
+
+        <com.hongyan.life.activity.bill.BillHeadView
+            android:id="@+id/headView"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/ds100"
+            android:layout_centerInParent="true" />
+    </RelativeLayout>
 
 </LinearLayout>

@@ -27,8 +27,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.bill.AddRecordActivity" />
-        <activity android:name=".activity.bill.AnalysisActivity" />
+        <activity
+            android:name=".activity.bill.AddRecordActivity"
+            android:theme="@style/ActivityTheme" />
+        <activity
+            android:name=".activity.bill.AnalysisActivity"
+            android:theme="@style/ActivityTheme" />
     </application>
 
 </manifest>
