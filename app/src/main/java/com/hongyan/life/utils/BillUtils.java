@@ -34,7 +34,12 @@ public class BillUtils {
      * 列表 1.收入 2.支出
      */
     public static ArrayList<Record> getRecordList(int type){
-        return null;
+        ArrayList<Record> records = new ArrayList<>();
+        records.add(new Record());
+        records.add(new Record());
+        records.add(new Record());
+        records.add(new Record());
+        return records;
     }
 
 }
