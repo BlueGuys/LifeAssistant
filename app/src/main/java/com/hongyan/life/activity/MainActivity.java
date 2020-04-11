@@ -1,5 +1,6 @@
 package com.hongyan.life.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.hongyan.life.R;
@@ -14,6 +15,7 @@ import com.hongyan.life.tab.TabContainer;
 import java.util.ArrayList;
 import java.util.List;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -133,5 +135,13 @@ public class MainActivity extends BaseActivity {
         public CharSequence getPageTitle(int position) {
             return null;
         }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+//        super.onActivityResult(requestCode, resultCode, data);
+        int currentItem = mViewPager.getCurrentItem();
+        BaseFragment baseFragment = mFragmentList.get(currentItem);
+        baseFragment.onActivityResult(requestCode,resultCode,data);
     }
 }

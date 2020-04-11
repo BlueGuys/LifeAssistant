@@ -33,6 +33,9 @@
         <activity
             android:name=".activity.bill.AnalysisActivity"
             android:theme="@style/ActivityTheme" />
+        <activity
+            android:name=".activity.home.AddMemoActivity"
+            android:theme="@style/ActivityTheme" />
     </application>
 
 </manifest>
