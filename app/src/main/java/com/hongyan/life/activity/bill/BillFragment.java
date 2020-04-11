@@ -2,7 +2,6 @@ package com.hongyan.life.activity.bill;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,15 +65,14 @@ public class BillFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        Log.e("aa","requestCode:"+  requestCode);
         if (requestCode == REQUEST_CODE) {
-            float amount = data.getFloatExtra("amount", 0f);
+            String amount = data.getStringExtra("amount");
             int category = data.getIntExtra("category", 1);
             String remark = data.getStringExtra("remark");
             int type = data.getIntExtra("type", 1);
-
+            
             Record record = new Record();
-            record.setAmount(amount);
+            record.setAmount(Float.parseFloat(amount));
             record.setCategory(category);
             record.setRemark(remark);
             record.setType(type);
@@ -84,7 +82,7 @@ public class BillFragment extends BaseFragment {
     }
 
     private void notifyData() {
-        ArrayList<Record> records = (ArrayList<Record>) BillUtils.getRecordList(0);
+        ArrayList<Record> records = (ArrayList<Record>) BillUtils.getAll();
         mAdapter.setData(records);
     }
 }

@@ -45,6 +45,7 @@ public class Category {
         this.icon = icon;
     }
 
+
     public static ArrayList<Category> getIncomeCategoryList() {
         ArrayList<Category> categories = new ArrayList<>();
         categories.add(new Category(1, "工资", R.drawable.ic_launcher));

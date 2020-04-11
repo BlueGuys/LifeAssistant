@@ -26,18 +26,18 @@ import java.util.List;
 
 public class AddRecordActivity extends BaseActivity {
 
-    private ImageView btnCommit;
     private ImageView btnBack;
     private GridView gridViewIncome;
     private GridView gridViewExpend;
     private CategoryAdapter inComeAdapter;
     private CategoryAdapter expendAdapter;
 
+    private int categoryID = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_record);
-        btnCommit = findViewById(R.id.btn_commit);
         btnBack = findViewById(R.id.image_back);
         gridViewIncome = findViewById(R.id.grid_income);
         gridViewExpend = findViewById(R.id.grid_expend);
@@ -48,12 +48,6 @@ public class AddRecordActivity extends BaseActivity {
         gridViewIncome.setAdapter(inComeAdapter);
         gridViewExpend.setAdapter(expendAdapter);
 
-        btnCommit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                commit();
-            }
-        });
         btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,20 +55,22 @@ public class AddRecordActivity extends BaseActivity {
             }
         });
 
-        ArrayList<Category> incomeCategoryList = Category.getIncomeCategoryList();
-        ArrayList<Category> expandCategoryList = Category.getExpandCategoryList();
+        final ArrayList<Category> incomeCategoryList = Category.getIncomeCategoryList();
+        final ArrayList<Category> expandCategoryList = Category.getExpandCategoryList();
         inComeAdapter.setData(incomeCategoryList);
         expendAdapter.setData(expandCategoryList);
 
         gridViewIncome.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                categoryID = incomeCategoryList.get(position).type;
                 showEditDialog();
             }
         });
         gridViewExpend.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                categoryID = expandCategoryList.get(position).type;
                 showEditDialog();
             }
         });
@@ -100,22 +96,19 @@ public class AddRecordActivity extends BaseActivity {
         myMiddleDialog.setListener(new MyMiddleDialog.OnInputListener() {
             @Override
             public void callBack(String amount) {
-                Log.e("aaa", "==============");
-                commit();
+                commit(amount);
             }
         });
     }
 
 
-    private void commit() {
-        float amount = 100.00f;
-        int category = 1;
+    private void commit(String amount) {
         String remark = "猫猫猫";
         int type = 1;
 
         Intent intent = new Intent();
         intent.putExtra("amount", amount);
-        intent.putExtra("category", amount);
+        intent.putExtra("category", categoryID);
         intent.putExtra("remark", remark);
         intent.putExtra("type", type);
         setResult(1002, intent);
@@ -140,8 +133,8 @@ public class AddRecordActivity extends BaseActivity {
         }
 
         @Override
-        public Object getItem(int position) {
-            return position;
+        public Category getItem(int position) {
+            return categories.get(position);
         }
 
         @Override

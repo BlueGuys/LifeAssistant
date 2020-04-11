@@ -24,15 +24,6 @@
             android:text="记一笔"
             android:textColor="@color/white" />
 
-        <ImageView
-            android:id="@+id/btn_commit"
-            android:layout_width="@dimen/ds80"
-            android:layout_height="@dimen/ds80"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/ds50"
-            android:src="@drawable/icon_service_s" />
-
     </RelativeLayout>
 
     <LinearLayout

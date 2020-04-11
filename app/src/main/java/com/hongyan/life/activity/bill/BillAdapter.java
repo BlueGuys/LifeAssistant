@@ -6,6 +6,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.hongyan.life.R;
 
@@ -67,10 +69,14 @@ public class BillAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if(convertView == null){
-            final Record item = mList.get(position);
-            convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_record, parent, false);
-        }
+        final Record record = mList.get(position);
+        convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_record, parent, false);
+        ImageView iamgeIcon = convertView.findViewById(R.id.icon);
+        TextView tvTitle = convertView.findViewById(R.id.tv_title);
+        TextView tvAmount = convertView.findViewById(R.id.tv_amount);
+        tvTitle.setText("草啊");
+        tvAmount.setText(String.valueOf(record.amount));
+
         return convertView;
     }
 }

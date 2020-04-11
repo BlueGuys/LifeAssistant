@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="@dimen/ds100"
     android:background="@color/c_bg_a">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:text="ITEM">
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="@dimen/ds40"
+        android:layout_height="@dimen/ds40"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:src="@drawable/ic_launcher" />
 
-    </TextView>
-</LinearLayout>
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/icon"
+        android:text="aaaaa" />
+
+    <TextView
+        android:id="@+id/tv_amount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:text="ITEM" />
+
+</RelativeLayout>
