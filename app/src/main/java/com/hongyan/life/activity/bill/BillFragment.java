@@ -39,14 +39,14 @@ public class BillFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddRecordActivity.class);
-                startActivityForResult(intent, REQUEST_CODE);
+                getActivity().startActivityForResult(intent, REQUEST_CODE);
             }
         });
         btnAnalysis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AnalysisActivity.class);
-                startActivity(intent);
+                getActivity().startActivity(intent);
             }
         });
 

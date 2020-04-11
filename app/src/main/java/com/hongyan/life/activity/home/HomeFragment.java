@@ -125,7 +125,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     public void onResume() {
         super.onResume();
         String name = weatherCityName.getText().toString();
-        requestWeather(name);
+//        requestWeather(name);
     }
 
     private void requestWeather(String name) {
