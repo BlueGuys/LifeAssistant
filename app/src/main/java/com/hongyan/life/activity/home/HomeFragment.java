@@ -17,7 +17,6 @@ import com.hongyan.life.net.LFHttpRequestUtils;
 import com.hongyan.life.net.LFNetworkCallback;
 import com.hongyan.life.utils.GsonUtils;
 
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
