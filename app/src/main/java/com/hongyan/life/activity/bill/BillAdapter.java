@@ -71,9 +71,10 @@ public class BillAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         final Record record = mList.get(position);
         convertView = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_record, parent, false);
-        ImageView iamgeIcon = convertView.findViewById(R.id.icon);
+        ImageView imageView = convertView.findViewById(R.id.icon);
         TextView tvTitle = convertView.findViewById(R.id.tv_title);
         TextView tvAmount = convertView.findViewById(R.id.tv_amount);
+        imageView.setImageResource(Category.getIconById(record.type));
         tvTitle.setText(Category.getDescById(record.type));
         tvAmount.setText(String.valueOf(record.amount));
         return convertView;
