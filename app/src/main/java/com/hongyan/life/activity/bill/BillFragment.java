@@ -2,6 +2,7 @@ package com.hongyan.life.activity.bill;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +24,8 @@ public class BillFragment extends BaseFragment {
     private ImageView btnAdd;
     private ImageView btnAnalysis;
 
+    private static final int REQUEST_CODE = 1000;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_bill, container, false);
@@ -36,7 +39,7 @@ public class BillFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getActivity(), AddRecordActivity.class);
-                startActivityForResult(intent, 1000);
+                startActivityForResult(intent, REQUEST_CODE);
             }
         });
         btnAnalysis.setOnClickListener(new View.OnClickListener() {
@@ -63,10 +66,11 @@ public class BillFragment extends BaseFragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1000) {
+        Log.e("aa","requestCode:"+  requestCode);
+        if (requestCode == REQUEST_CODE) {
             float amount = data.getFloatExtra("amount", 0f);
-            int category = data.getIntExtra("amount", 1);
-            String remark = data.getStringExtra("amount");
+            int category = data.getIntExtra("category", 1);
+            String remark = data.getStringExtra("remark");
             int type = data.getIntExtra("type", 1);
 
             Record record = new Record();
