@@ -1,37 +1,44 @@
 package com.hongyan.life.activity.bill;
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 import com.hongyan.life.R;
 import com.hongyan.life.activity.BaseFragment;
 import com.hongyan.life.utils.BillUtils;
 
+import java.util.ArrayList;
+
 public class BillFragment extends BaseFragment {
 
     private View view;
-    private BillHeadView headView;
+
     private ListView listView;
     private BillAdapter mAdapter;
+    private ImageView btnAdd;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_bill, container, false);
-        headView = view.findViewById(R.id.headView);
+
         listView = view.findViewById(R.id.bill_listView);
+        btnAdd = view.findViewById(R.id.btn_add);
         mAdapter = new BillAdapter(getContext());
-        headView.setOnMenuClickListener(new BillHeadView.OnMenuClickListener() {
+
+        btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onSelect(int position) {
-                Log.e("hhh", "选择了:"+position);
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), AddRecordActivity.class);
+                startActivityForResult(intent, 1000);
             }
         });
         listView.setAdapter(mAdapter);
-        mAdapter.setData(BillUtils.getRecordList(1));
+        notifyData();
         return view;
     }
 
@@ -43,7 +50,27 @@ public class BillFragment extends BaseFragment {
         }
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == 1000) {
+            float amount = data.getFloatExtra("amount", 0f);
+            int category = data.getIntExtra("amount", 1);
+            String remark = data.getStringExtra("amount");
+            int type = data.getIntExtra("type", 1);
 
+            Record record = new Record();
+            record.setAmount(amount);
+            record.setCategory(category);
+            record.setRemark(remark);
+            record.setType(type);
+            BillUtils.addRecord(record);
+            notifyData();
+        }
+    }
 
-
+    private void notifyData() {
+        ArrayList<Record> records = (ArrayList<Record>) BillUtils.getRecordList(0);
+        mAdapter.setData(records);
+    }
 }
