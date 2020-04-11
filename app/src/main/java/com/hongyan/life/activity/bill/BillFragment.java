@@ -25,6 +25,8 @@ public class BillFragment extends BaseFragment {
 
     private static final int REQUEST_CODE = 1000;
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_bill, container, false);
@@ -50,6 +52,7 @@ public class BillFragment extends BaseFragment {
         });
 
         listView.setAdapter(mAdapter);
+        Category.init();
         notifyData();
         return view;
     }
@@ -70,7 +73,7 @@ public class BillFragment extends BaseFragment {
             int category = data.getIntExtra("category", 1);
             String remark = data.getStringExtra("remark");
             int type = data.getIntExtra("type", 1);
-            
+
             Record record = new Record();
             record.setAmount(Float.parseFloat(amount));
             record.setCategory(category);
