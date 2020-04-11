@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.hongyan.life.MyApplication;
 import com.hongyan.life.R;
 import com.hongyan.life.activity.BaseFragment;
+import com.hongyan.life.activity.device.DeviceInfoActivity;
 import com.hongyan.life.bean.Memo;
 import com.hongyan.life.bean.MemoDao;
 import com.hongyan.life.bean.WeatherNow;
@@ -67,8 +68,17 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     private void initView() {
         initWeather();
         initMemo();
+        initTips();
     }
 
+    private void initTips() {
+        view.findViewById(R.id.fragment_home_info_tips_layout).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), DeviceInfoActivity.class));
+            }
+        });
+    }
 
 
     private void initWeather() {

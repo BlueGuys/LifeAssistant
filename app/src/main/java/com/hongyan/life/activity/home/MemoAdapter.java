@@ -11,6 +11,7 @@ import com.hongyan.life.R;
 import com.hongyan.life.activity.bill.Record;
 import com.hongyan.life.bean.Memo;
 import com.hongyan.life.utils.DateUtil;
+import com.hongyan.life.utils.DateUtils;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,8 +56,14 @@ public class MemoAdapter extends BaseAdapter {
         TextView timeTv = convertView.findViewById(R.id.item_memo_time);
         long timestamp = memo.getTimestamp();
         Date date = new Date(timestamp);
-        String format = dateFormat.format(date);
-        timeTv.setText(format);
+        String format = null;
+        try {
+            format = DateUtils.dateToString(date,DateUtils.LOCALE_DATE_FORMAT);
+            timeTv.setText(format);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
 
         return convertView;
     }
