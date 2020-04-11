@@ -57,11 +57,11 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-//        if (view==null){
+        if (view==null){
             view = inflater.inflate(R.layout.fragment_home, container, false);
             roorLayout = view.findViewById(R.id.linearLayout);
             initView();
-//        }
+        }
         return view;
     }
 
@@ -135,7 +135,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     public void onResume() {
         super.onResume();
         String name = weatherCityName.getText().toString();
-//        requestWeather(name);
+        requestWeather(name);
     }
 
     private void requestWeather(String name) {
@@ -151,20 +151,24 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
         LFHttpRequestUtils.postSyn(url, parameterList, new LFNetworkCallback() {
             @Override
-            public void completed(String response) {
-                Log.d(TAG,"Weather info :"+ response);
-                try{
-                    String json = response;
-                    WeatherNow weatherNow = GsonUtils.gsonResolve(json, WeatherNow.class);
-                    String wea_img = weatherNow.getWea_img();
-                    weatherImg.setImageResource(getImageIdByWea(wea_img));
-                    tipsTv.setText(weatherNow.getAir_tips());
-                    airLevelTv.setText(weatherNow.getAir_level());
-                    tempTv.setText(weatherNow.getTem()+"℃");
-                    temp12Tv.setText(weatherNow.getTem1()+" / "+weatherNow.getTem2());
-                    weatherLayout.setBackgroundColor(getWeatherBackImg(weatherNow.getWea_img()));
-                }catch (Exception e){
-                }
+            public void completed(final String response) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try{
+                            String json = response;
+                            WeatherNow weatherNow = GsonUtils.gsonResolve(json, WeatherNow.class);
+                            String wea_img = weatherNow.getWea_img();
+                            weatherImg.setImageResource(getImageIdByWea(wea_img));
+                            tipsTv.setText(weatherNow.getAir_tips());
+                            airLevelTv.setText(weatherNow.getAir_level());
+                            tempTv.setText(weatherNow.getTem()+"℃");
+                            temp12Tv.setText(weatherNow.getTem1()+" / "+weatherNow.getTem2());
+                            weatherLayout.setBackgroundColor(getWeatherBackImg(weatherNow.getWea_img()));
+                        }catch (Exception e){
+                        }
+                    }
+                });
             }
 
             @Override

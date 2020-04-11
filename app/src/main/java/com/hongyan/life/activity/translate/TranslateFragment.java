@@ -36,21 +36,23 @@ public class TranslateFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_translate, container, false);
-        etInput = view.findViewById(R.id.edit_input);
-        imageSearch = view.findViewById(R.id.image_search);
-        tvResultA = view.findViewById(R.id.tv_result_A);
-        tvResultA1 = view.findViewById(R.id.tv_result_A1);
-        tvResultB = view.findViewById(R.id.tv_result_B);
-        tvResultB1 = view.findViewById(R.id.tv_result_B1);
-        tvResultC1 = view.findViewById(R.id.tv_result_C1);
-        tvResultD1 = view.findViewById(R.id.tv_result_D1);
-        imageSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                search(etInput.getText().toString());
-            }
-        });
+        if (view==null){
+            view = inflater.inflate(R.layout.fragment_translate, container, false);
+            etInput = view.findViewById(R.id.edit_input);
+            imageSearch = view.findViewById(R.id.image_search);
+            tvResultA = view.findViewById(R.id.tv_result_A);
+            tvResultA1 = view.findViewById(R.id.tv_result_A1);
+            tvResultB = view.findViewById(R.id.tv_result_B);
+            tvResultB1 = view.findViewById(R.id.tv_result_B1);
+            tvResultC1 = view.findViewById(R.id.tv_result_C1);
+            tvResultD1 = view.findViewById(R.id.tv_result_D1);
+            imageSearch.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    search(etInput.getText().toString());
+                }
+            });
+        }
         return view;
     }
 

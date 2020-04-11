@@ -19,12 +19,13 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
     private LinearLayout roorLayout;
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_calc, container, false);
-        roorLayout = view.findViewById(R.id.linearLayout);
-        initView();
+        if (view == null) {
+            view = inflater.inflate(R.layout.fragment_calc, container, false);
+            roorLayout = view.findViewById(R.id.linearLayout);
+            initView();
+        }
         return view;
     }
 
@@ -54,23 +55,23 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v){
+    public void onClick(View v) {
         int buttonId = v.getId();
         TextView textView = view.findViewById(R.id.fragment_calc_expression);//表达式窗口
 
-        switch (buttonId){
+        switch (buttonId) {
             case R.id.fragment_calc_id_ac:
                 textView.setText("");
                 break;
             case R.id.fragment_calc_id_equals:
-                try{
-                    if (textView.getText().toString().equals("")){
+                try {
+                    if (textView.getText().toString().equals("")) {
                         textView.setText("0");
-                    }else {
+                    } else {
                         double answer = calculate(textView.getText().toString());
                         textView.setText(Double.toString(answer));
                     }
-                }catch(Exception e){
+                } catch (Exception e) {
                     textView.setText("您输入的表达式有误！");
                 }
                 break;
@@ -81,26 +82,26 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
             case R.id.fragment_calc_id_dot:
                 String[] symbles = new String[]{"＋", "－", "×", "÷", "."};
                 boolean isSymble = false;
-                for(String symble:symbles){
-                    if(textView.getText().toString().endsWith(symble)){
+                for (String symble : symbles) {
+                    if (textView.getText().toString().endsWith(symble)) {
                         isSymble = true;
                         break;
                     }
                 }
-                if(isSymble){
-                    String buttonText = ((Button)v).getText().toString();
+                if (isSymble) {
+                    String buttonText = ((Button) v).getText().toString();
                     String newText = textView.getText().toString();
                     newText = newText.substring(0, newText.length() - 1);
                     newText = newText + buttonText;
                     textView.setText(newText);
-                }else{
-                    String buttonText = ((Button)v).getText().toString();
+                } else {
+                    String buttonText = ((Button) v).getText().toString();
                     String newText = textView.getText() + buttonText;
                     textView.setText(newText);
                 }
                 break;
             default:
-                String buttonText = ((Button)v).getText().toString();
+                String buttonText = ((Button) v).getText().toString();
                 String newText = textView.getText() + buttonText;
                 textView.setText(newText);
                 break;
@@ -109,14 +110,14 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
     }
 
     //计算带括号的表达式，从里往外计算
-    private double calculate(String expression) throws Exception{
+    private double calculate(String expression) throws Exception {
         Stack<Character> stack = new Stack<>();
-        for(char ch:expression.toCharArray()){
-            if(ch != ')'){
+        for (char ch : expression.toCharArray()) {
+            if (ch != ')') {
                 stack.push(ch);
-            }else{
+            } else {
                 StringBuffer simpleExpression = new StringBuffer("");
-                while(stack.peek() != '('){
+                while (stack.peek() != '(') {
                     simpleExpression.append(stack.pop());
                 }
                 //移除括号
@@ -124,14 +125,14 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
                 //计算不带括号的表达式
                 double simpleAnswer = calculateWithoutBrackets(simpleExpression.reverse().toString());
                 //将结果放进栈
-                for(char temp:Double.toString(simpleAnswer).toCharArray()){
+                for (char temp : Double.toString(simpleAnswer).toCharArray()) {
                     stack.push(temp);
                 }
             }
         }
 
         StringBuffer lastExpression = new StringBuffer("");
-        for(char lastCh:stack){
+        for (char lastCh : stack) {
             lastExpression.append(lastCh);
         }
 
@@ -140,7 +141,7 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
     }
 
     //计算不带括号的表达式
-    private double calculateWithoutBrackets(String expression) throws Exception{
+    private double calculateWithoutBrackets(String expression) throws Exception {
         int multiplyIndex = expression.indexOf("×");
         int divideIndex = expression.indexOf("÷");
         int plusIndex = expression.indexOf("＋");
@@ -149,7 +150,7 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
         String newExpression = "";
 
         //当表达式中没有运算符了，就直接返回
-        if(multiplyIndex == -1
+        if (multiplyIndex == -1
                 && divideIndex == -1
                 && plusIndex == -1
                 && minusIndex == -1) {
@@ -157,8 +158,8 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
         }
 
         //计算乘法，乘法除法都有的情况下从左往右
-        if(multiplyIndex != -1
-                && (divideIndex == -1 || multiplyIndex < divideIndex)){
+        if (multiplyIndex != -1
+                && (divideIndex == -1 || multiplyIndex < divideIndex)) {
             //第一个乘法二目表达式
             String simpleExpression = findSimpleExpression(expression, multiplyIndex);
             //第一个乘法二目表达式的结果
@@ -170,8 +171,8 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
         }
 
         //计算除法，乘法除法都有的情况下从左往右
-        if(divideIndex != -1
-                && (multiplyIndex == -1 || divideIndex < multiplyIndex)){
+        if (divideIndex != -1
+                && (multiplyIndex == -1 || divideIndex < multiplyIndex)) {
             //第一个除法二目表达式
             String simpleExpression = findSimpleExpression(expression, divideIndex);
             //第一个除法二目表达式的结果
@@ -183,8 +184,8 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
         }
 
         //计算加法，加法减法都有的情况下从左往右
-        if(plusIndex != -1
-                && (minusIndex == -1 || plusIndex < minusIndex)){
+        if (plusIndex != -1
+                && (minusIndex == -1 || plusIndex < minusIndex)) {
             //第一个加法二目表达式
             String simpleExpression = findSimpleExpression(expression, plusIndex);
             //第一个加法二目表达式的结果
@@ -196,8 +197,8 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
         }
 
         //计算减法，加法减法都有的情况下从左往右
-        if(minusIndex != -1
-                && (plusIndex == -1 || minusIndex < plusIndex)){
+        if (minusIndex != -1
+                && (plusIndex == -1 || minusIndex < plusIndex)) {
             //第一个减法二目表达式
             String simpleExpression = findSimpleExpression(expression, minusIndex);
             //第一个减法二目表达式的结果
@@ -218,25 +219,25 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
         String operator = "";
         String lastNum = "";
 
-        if(expression.indexOf("＋") != -1){
+        if (expression.indexOf("＋") != -1) {
             operator = "＋";
             firstNum = expression.substring(0, expression.indexOf("＋"));
             lastNum = expression.substring(expression.indexOf("＋") + 1);
-        }else if(expression.indexOf("－") != -1){
+        } else if (expression.indexOf("－") != -1) {
             operator = "－";
             firstNum = expression.substring(0, expression.indexOf("－"));
             lastNum = expression.substring(expression.indexOf("－") + 1);
-        }else if(expression.indexOf("×") != -1){
+        } else if (expression.indexOf("×") != -1) {
             operator = "×";
             firstNum = expression.substring(0, expression.indexOf("×"));
             lastNum = expression.substring(expression.indexOf("×") + 1);
-        }else if(expression.indexOf("÷") != -1){
+        } else if (expression.indexOf("÷") != -1) {
             operator = "÷";
             firstNum = expression.substring(0, expression.indexOf("÷"));
             lastNum = expression.substring(expression.indexOf("÷") + 1);
         }
 
-        switch(operator) {
+        switch (operator) {
             case "＋":
                 answer = Double.parseDouble(firstNum) + Double.parseDouble(lastNum);
                 break;
@@ -258,25 +259,25 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
     private String findSimpleExpression(String oldExpression, int center) {
         int left = center, right = center;
         boolean findLeft = false, findRight = false;
-        while(!findLeft || !findRight) {
-            if(!findLeft){
+        while (!findLeft || !findRight) {
+            if (!findLeft) {
                 left--;
             }
-            if(!findRight){
+            if (!findRight) {
                 right++;
             }
-            if(left == 0
+            if (left == 0
                     || (oldExpression.charAt(left) == '＋' || oldExpression.charAt(left) == '－'
-                    || oldExpression.charAt(left) == '×' || oldExpression.charAt(left) == '÷')){
+                    || oldExpression.charAt(left) == '×' || oldExpression.charAt(left) == '÷')) {
                 findLeft = true;
                 //不能包括运算符
-                if(left != 0){
+                if (left != 0) {
                     left++;
                 }
             }
-            if(right == oldExpression.length()
+            if (right == oldExpression.length()
                     || (oldExpression.charAt(right) == '＋' || oldExpression.charAt(right) == '－'
-                    || oldExpression.charAt(right) == '×' || oldExpression.charAt(right) == '÷')){
+                    || oldExpression.charAt(right) == '×' || oldExpression.charAt(right) == '÷')) {
                 findRight = true;
 
                 //不能包括运算符，因为右边时开区间，所以不需要判断
@@ -289,10 +290,6 @@ public class CalcFragment extends BaseFragment implements View.OnClickListener {
 
         return oldExpression.substring(left, right);
     }
-
-
-
-
 
 
     @Override

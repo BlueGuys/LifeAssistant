@@ -34,9 +34,11 @@ public class SharesFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_shares, container, false);
-        initView();
-        mWebView.loadUrl(mUrl);
+        if (view==null){
+            view = inflater.inflate(R.layout.fragment_shares, container, false);
+            initView();
+            mWebView.loadUrl(mUrl);
+        }
         return view;
     }
 

@@ -2,6 +2,7 @@ package com.hongyan.life.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.hongyan.life.R;
 import com.hongyan.life.activity.bill.BillFragment;

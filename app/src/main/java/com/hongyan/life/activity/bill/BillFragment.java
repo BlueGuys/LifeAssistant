@@ -28,30 +28,32 @@ public class BillFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_bill, container, false);
+        if(view == null){
+            view = inflater.inflate(R.layout.fragment_bill, container, false);
 
-        listView = view.findViewById(R.id.bill_listView);
-        btnAdd = view.findViewById(R.id.btn_add);
-        btnAnalysis = view.findViewById(R.id.btn_analysis);
-        mAdapter = new BillAdapter(getContext());
+            listView = view.findViewById(R.id.bill_listView);
+            btnAdd = view.findViewById(R.id.btn_add);
+            btnAnalysis = view.findViewById(R.id.btn_analysis);
+            mAdapter = new BillAdapter(getContext());
 
-        btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AddRecordActivity.class);
-                getActivity().startActivityForResult(intent, REQUEST_CODE);
-            }
-        });
-        btnAnalysis.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), AnalysisActivity.class);
-                getActivity().startActivity(intent);
-            }
-        });
+            btnAdd.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), AddRecordActivity.class);
+                    getActivity().startActivityForResult(intent, REQUEST_CODE);
+                }
+            });
+            btnAnalysis.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(getActivity(), AnalysisActivity.class);
+                    getActivity().startActivity(intent);
+                }
+            });
 
-        listView.setAdapter(mAdapter);
-        notifyData();
+            listView.setAdapter(mAdapter);
+            notifyData();
+        }
         return view;
     }
 
