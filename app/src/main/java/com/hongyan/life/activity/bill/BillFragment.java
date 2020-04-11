@@ -51,7 +51,6 @@ public class BillFragment extends BaseFragment {
         });
 
         listView.setAdapter(mAdapter);
-        Category.init();
         notifyData();
         return view;
     }

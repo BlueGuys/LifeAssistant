@@ -5,6 +5,7 @@ import android.os.Bundle;
 
 import com.hongyan.life.R;
 import com.hongyan.life.activity.bill.BillFragment;
+import com.hongyan.life.activity.bill.Category;
 import com.hongyan.life.activity.calc.CalcFragment;
 import com.hongyan.life.activity.home.HomeFragment;
 import com.hongyan.life.activity.shares.SharesFragment;
@@ -33,6 +34,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Category.init();
         mViewPager = findViewById(R.id.vp_content);
         tabContainer = findViewById(R.id.tabContainer);
         contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
