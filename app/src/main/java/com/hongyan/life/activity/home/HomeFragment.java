@@ -65,16 +65,11 @@ public class HomeFragment extends BaseFragment {
         airLevelTv=view.findViewById(R.id.fragment_home_weather_air_level);
         tempTv=view.findViewById(R.id.fragment_home_weather_temp);
         temp12Tv=view.findViewById(R.id.fragment_home_weather_temp12);
-
-
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
         String name = weatherCityName.getText().toString();
         requestWeather(name);
+
     }
+
 
     private void requestWeather(String name) {
         String url = baseWeatherUrl;
