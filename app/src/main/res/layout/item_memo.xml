@@ -20,7 +20,17 @@
         android:ellipsize="end"
         />
 
-
+    <TextView
+        android:id="@+id/item_memo_time"
+        android:layout_marginRight="15dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/item_memo_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        android:text="00-00 00:00"
+        />
 
 
 

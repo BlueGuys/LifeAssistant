@@ -60,15 +60,17 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
     private ImageView memoAdd;
     private ListView memoList;
-    private List<Memo> memos=new ArrayList<>();
+    private List<Memo> memos;
 
-    MemoAdapter memoAdapter;
+    private MemoAdapter memoAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
-        roorLayout = view.findViewById(R.id.linearLayout);
-        initView();
+//        if (view==null){
+            view = inflater.inflate(R.layout.fragment_home, container, false);
+            roorLayout = view.findViewById(R.id.linearLayout);
+            initView();
+//        }
         return view;
     }
 
@@ -102,8 +104,9 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         });
 
         memoList=view.findViewById(R.id.fragment_home_memo_list);
+        memos=new ArrayList<>();
         memoAdapter=new MemoAdapter(getActivity(),memos);
-        memoList.setAdapter(new MemoAdapter(getActivity(),memos));
+        memoList.setAdapter(memoAdapter);
         memoList.setOnItemClickListener(this);
         memoList.setOnItemLongClickListener(this);
 
@@ -123,9 +126,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         if (qmemos!=null){
             memos.clear();
             memos.addAll(qmemos);
-//            memoAdapter=new MemoAdapter(getActivity(),memos);
             memoAdapter.notifyDataSetChanged();
-//            memoList.setAdapter(memoAdapter);
         }
     }
 
@@ -249,7 +250,9 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
             public void onClick(boolean bool) {
                 if (bool){
                     deleteMemo(memos.get(position).getId());
-                    getAllMemos();
+//                    getAllMemos();
+                    memos.remove(memos.get(position));
+                    memoAdapter.notifyDataSetChanged();
                 }
             }
         }
