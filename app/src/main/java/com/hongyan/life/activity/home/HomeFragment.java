@@ -1,7 +1,5 @@
 package com.hongyan.life.activity.home;
 
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,10 +14,6 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.hongyan.life.MyApplication;
 import com.hongyan.life.R;
 import com.hongyan.life.activity.BaseFragment;
@@ -28,15 +22,11 @@ import com.hongyan.life.bean.MemoDao;
 import com.hongyan.life.bean.WeatherNow;
 import com.hongyan.life.net.LFHttpRequestUtils;
 import com.hongyan.life.net.LFNetworkCallback;
-import com.hongyan.life.utils.BillUtils;
-import com.hongyan.life.utils.DateUtil;
 import com.hongyan.life.utils.GsonUtils;
 import com.hongyan.life.view.CommonDialog;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
