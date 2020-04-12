@@ -12,12 +12,17 @@ public class Memo {
 
     private long timestamp;
 
+    private String title;
+
     private String content;
 
-    @Generated(hash = 1987990789)
-    public Memo(Long id, long timestamp, String content) {
+
+
+    @Generated(hash = 2128683287)
+    public Memo(Long id, long timestamp, String title, String content) {
         this.id = id;
         this.timestamp = timestamp;
+        this.title = title;
         this.content = content;
     }
 
@@ -47,5 +52,13 @@ public class Memo {
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }
