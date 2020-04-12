@@ -130,7 +130,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:background="@drawable/shape_bottom_line">
+            android:background="@color/white">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -139,7 +139,6 @@
                 android:text="备忘录"
                 android:textColor="@color/black"
                 android:textSize="18sp" />
-
 
             <ImageView
                 android:id="@+id/fragment_home_memo_add"
@@ -152,6 +151,10 @@
 
         </RelativeLayout>
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/appColorPositive"/>
 
         <ListView
             android:id="@+id/fragment_home_memo_list"
