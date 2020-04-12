@@ -46,4 +46,9 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Translucent</item>
     </style>
 
+    <style name="button">
+        <item name="android:background">@drawable/bg_btton</item>
+        <item name="android:textColor">@color/font_a</item>
+    </style>
+
 </resources>
