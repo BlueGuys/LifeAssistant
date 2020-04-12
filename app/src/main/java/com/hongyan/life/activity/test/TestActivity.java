@@ -85,6 +85,7 @@ public class TestActivity extends Activity {
         lineChart.setScaleEnabled(true);
         lineChart.setPinchZoom(true);
 
+
         List<String> list = new ArrayList<>();
         for (int i = 0; i < 12; i++) {
             list.add(String.valueOf(i+1).concat("月"));
