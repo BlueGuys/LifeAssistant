@@ -17,6 +17,7 @@ import com.hongyan.life.net.LFHttpRequestUtils;
 import com.hongyan.life.net.LFNetworkCallback;
 import com.hongyan.life.utils.GsonUtils;
 
+import java.net.URLEncoder;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -29,11 +30,21 @@ public class SharesFragment extends BaseFragment {
     private static String baseUrl = "http://hq.sinajs.cn/list=sh";
     private static String fenShiUrl = "http://image.sinajs.cn/newchart/min/n/sh";
     private static String riKUrl = "http://image.sinajs.cn/newchart/daily/n/sh";
-    private static String weekKUrl = "http://image.sinajs.cn/newchart/weekly/n/";
-    private static String monthKUrl = "http://image.sinajs.cn/newchart/monthly/n/";
+    private static String weekKUrl = "http://image.sinajs.cn/newchart/weekly/n/sh";
+    private static String monthKUrl = "http://image.sinajs.cn/newchart/monthly/n/sh";
 
     private TextView title;
+    private TextView kaipan;
+    private TextView dangqian;
+    private TextView today_min;
+    private TextView today_max;
+
+
+
     ImageView fenshi;
+    ImageView day;
+    ImageView week;
+    ImageView month;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -42,7 +53,16 @@ public class SharesFragment extends BaseFragment {
             etInput = view.findViewById(R.id.edit_input);
             imageSearch = view.findViewById(R.id.image_search);
             title=view.findViewById(R.id.fragment_shares_title);
+
+            kaipan=view.findViewById(R.id.kaipan);
+            dangqian=view.findViewById(R.id.dangqian);
+            today_min=view.findViewById(R.id.today_min);
+            today_max=view.findViewById(R.id.today_max);
+
             fenshi=view.findViewById(R.id.fenshi_img);
+            day=view.findViewById(R.id.day_img);
+            week=view.findViewById(R.id.week_img);
+            month=view.findViewById(R.id.month_img);
 
             imageSearch.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -67,9 +87,18 @@ public class SharesFragment extends BaseFragment {
                     @Override
                     public void run() {
                         try {
-                            String json = response;
-                            Log.e("test",json);
-                            title.setText(json);
+                            String data = response;
+//                            data = URLEncoder.encode(data,"GBK");
+                            data=data.substring(data.indexOf("\"")+1,data.lastIndexOf("\""));
+                            String gbkData = new String(data.getBytes(),"GBK");
+                            Log.e("test", "DATA:"+ data);
+                            String[] split = data.split(",");
+                            kaipan.setText("今日开盘价："+split[1]);
+                            dangqian.setText("当前价格："+split[3]);
+                            today_min.setText("今日最低价："+split[5]);
+                            today_max.setText("今日最高价："+split[4]);
+
+//                            title.setText(split[0]);
 
 
                         } catch (Exception e) {
@@ -85,6 +114,9 @@ public class SharesFragment extends BaseFragment {
         });
 
        Glide.with(view).asGif().load(fenShiUrl+str+".gif").into(fenshi);
+       Glide.with(view).asGif().load(riKUrl+str+".gif").into(day);
+       Glide.with(view).asGif().load(weekKUrl+str+".gif").into(week);
+       Glide.with(view).asGif().load(monthKUrl+str+".gif").into(month);
     }
 
 
