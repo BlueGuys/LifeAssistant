@@ -94,6 +94,11 @@ public class SharesFragment extends BaseFragment {
                             Log.e("test", "DATA:"+ data);
                             if (data.length()<1){
                                 Toast.makeText(getActivity(),"请求数据失败，请检查股票代码！",Toast.LENGTH_LONG).show();
+                                kaipan.setVisibility(View.GONE);
+                                dangqian.setVisibility(View.GONE);
+                                today_min.setVisibility(View.GONE);
+                                today_max.setVisibility(View.GONE);
+                                return;
                             }
                             String[] split = data.split(",");
                             kaipan.setText("今日开盘价："+split[1]);
