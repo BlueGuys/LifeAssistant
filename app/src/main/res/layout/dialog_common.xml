@@ -22,9 +22,8 @@
             android:lineSpacingExtra="5dp"
             android:maxEms="25"
             android:padding="6dp"
-            android:textColor="@color/black"
             android:text="content"
-             />
+            android:textColor="@color/black" />
     </RelativeLayout>
 
 
@@ -40,14 +39,13 @@
         android:orientation="horizontal">
 
         <TextView
-            android:textColor="@color/black"
             android:id="@+id/tv_cancel"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:gravity="center"
             android:text="取消"
-             />
+            android:textColor="@color/black" />
 
         <View
             android:layout_width="0.5dp"
@@ -62,8 +60,7 @@
             android:layout_weight="1"
             android:gravity="center"
             android:text="确定"
-            android:textColor="#ED6F19"
-            />
+            android:textColor="@color/appColorPositive" />
 
 
     </LinearLayout>
