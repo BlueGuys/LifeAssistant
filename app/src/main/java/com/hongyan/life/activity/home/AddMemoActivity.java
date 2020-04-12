@@ -40,7 +40,8 @@ public class AddMemoActivity extends Activity {
         if (memoId > 0) {
             Memo memo = selectMemoById(memoId);
             if (memo != null) {
-                etTitle.setText(memo.getContent());
+                etTitle.setText(memo.getTitle());
+                etContent.setText(memo.getContent());
             }
         }
         imageBack.setOnClickListener(new View.OnClickListener() {
