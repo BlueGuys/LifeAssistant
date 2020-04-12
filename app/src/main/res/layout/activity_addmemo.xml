@@ -6,41 +6,73 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="50dp">
+        android:layout_height="@dimen/ds100"
+        android:background="@color/appColorPositive">
 
-        <TextView
-            android:text="备忘录"
-            android:layout_centerInParent="true"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-
-
-        <Button
-            android:id="@+id/activity_addmemo_complete"
-            android:layout_alignParentRight="true"
+        <ImageView
+            android:id="@+id/image_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:text="完成"
-            />
+            android:src="@drawable/icon_arrow_back" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="备忘录"
+            android:textSize="18sp"
+            android:textColor="@color/white" />
+
+        <ImageView
+            android:id="@+id/image_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/icon_arrow_back" />
 
     </RelativeLayout>
 
+    <EditText
+        android:id="@+id/et_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/ds100"
+        android:layout_marginTop="@dimen/ds20"
+        android:enabled="true"
+        android:hint="标题"
+        android:layout_marginHorizontal="@dimen/ds20"
+        android:maxLines="10"
+        android:textCursorDrawable="@drawable/drawable_cusor"
+        android:background="@color/white"
+        android:padding="@dimen/ds20"
+        android:textSize="15sp"
+        android:lines="1"
+        android:scrollbars="vertical" />
 
-   <EditText
-       android:hint="请输入备忘录内容"
-       android:id="@+id/activity_addmemo_edit"
-       android:layout_width="match_parent"
-       android:layout_height="wrap_content"
-       android:enabled="true"
-       android:gravity="top"
-       android:minLines="8"
-       android:maxLines="10"
-       android:scrollbars="vertical"
-       />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginHorizontal="@dimen/ds30"
+        android:layout_marginBottom="@dimen/ds10"
+        android:layout_marginTop="@dimen/ds10"
+        android:background="@color/transparent"/>
 
+    <EditText
+        android:id="@+id/et_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:enabled="true"
+        android:padding="@dimen/ds20"
+        android:gravity="top"
+        android:textSize="15sp"
+        android:layout_marginHorizontal="@dimen/ds20"
+        android:hint="内容"
+        android:background="@color/white"
+        android:textCursorDrawable="@drawable/drawable_cusor"
+        android:maxLines="10"
+        android:minLines="8"
+        android:scrollbars="vertical" />
 
 </LinearLayout>

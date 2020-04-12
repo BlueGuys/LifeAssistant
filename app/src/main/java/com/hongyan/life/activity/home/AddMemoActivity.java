@@ -5,8 +5,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -19,39 +19,55 @@ import com.hongyan.life.bean.MemoDao;
 public class AddMemoActivity extends Activity {
 
     public static final String ADD_MEMO_ID_EXTRA = "AddMemoActivity_extra_id";
-    Button complete;
-    EditText editText;
+    EditText etTitle;
+    EditText etContent;
 
-    private long memoId=0;
+    private long memoId = 0;
+
+    private ImageView imageBack;
+    private ImageView imageDone;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_addmemo);
-        complete = findViewById(R.id.activity_addmemo_complete);
-        editText = findViewById(R.id.activity_addmemo_edit);
+        imageBack = findViewById(R.id.image_back);
+        imageDone = findViewById(R.id.image_done);
+        etTitle = findViewById(R.id.et_title);
+        etContent = findViewById(R.id.et_content);
 
         memoId = getIntent().getLongExtra(ADD_MEMO_ID_EXTRA, 0);
         if (memoId > 0) {
             Memo memo = selectMemoById(memoId);
             if (memo != null) {
-                editText.setText(memo.getContent());
+                etTitle.setText(memo.getContent());
             }
         }
-
-        complete.setOnClickListener(new View.OnClickListener() {
+        imageBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String s = editText.getText().toString();
-                if (TextUtils.isEmpty(s)) {
-                    Toast.makeText(AddMemoActivity.this, "输入内容为空", Toast.LENGTH_SHORT).show();
-                } else {
-                    Intent intent = new Intent();
-                    intent.putExtra("id",memoId);
-                    intent.putExtra("content",s);
-                    setResult(1,intent);
-                    finish();
+                finish();
+            }
+        });
+        imageDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String title = etTitle.getText().toString();
+                String conent = etContent.getText().toString();
+
+                if (TextUtils.isEmpty(title)) {
+                    title = "标题";
                 }
+                if (TextUtils.isEmpty(conent)) {
+                    conent = "内容";
+                }
+
+                Intent intent = new Intent();
+                intent.putExtra("id", memoId);
+                intent.putExtra("title", title);
+                intent.putExtra("content", conent);
+                setResult(1, intent);
+                finish();
             }
         });
     }
