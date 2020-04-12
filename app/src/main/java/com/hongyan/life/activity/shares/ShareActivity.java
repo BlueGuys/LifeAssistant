@@ -2,6 +2,7 @@ package com.hongyan.life.activity.shares;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -35,7 +36,7 @@ public class ShareActivity extends BaseActivity {
     private TextView dangqian;
     private TextView today_min;
     private TextView today_max;
-
+    private ImageView back;
 
 
     ImageView fenshi;
@@ -50,6 +51,7 @@ public class ShareActivity extends BaseActivity {
         etInput = findViewById(R.id.edit_input);
         imageSearch = findViewById(R.id.image_search);
         title=findViewById(R.id.fragment_shares_title);
+        back =findViewById(R.id.image_back);
 
         kaipan=findViewById(R.id.kaipan);
         dangqian=findViewById(R.id.dangqian);
@@ -61,15 +63,33 @@ public class ShareActivity extends BaseActivity {
         week=findViewById(R.id.week_img);
         month=findViewById(R.id.month_img);
 
+        etInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+            @Override
+            public boolean onEditorAction(TextView v, int actionId,
+                                          KeyEvent event) {
+                if ((actionId == 0 || actionId == 3) && event != null) {
+                    search(etInput.getText().toString());
+                    return true;
+                }
+                return false;
+            }
+
+        });
+
         imageSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 search(etInput.getText().toString());
             }
         });
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
-
-
 
     private void search(String str) {
         String dataUrl = baseUrl+str;

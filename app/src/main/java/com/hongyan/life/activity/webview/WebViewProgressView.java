@@ -31,7 +31,7 @@ public class WebViewProgressView extends View {
         mPaint.setDither(true);
         mPaint.setAntiAlias(true);
         mPaint.setStrokeWidth(10);
-        mPaint.setColor(Color.GREEN);
+        mPaint.setColor(Color.parseColor("#0078ff"));
     }
 
     @Override

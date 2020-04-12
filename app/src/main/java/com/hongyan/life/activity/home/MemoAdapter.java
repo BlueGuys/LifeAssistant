@@ -52,7 +52,7 @@ public class MemoAdapter extends BaseAdapter {
         TextView tvTitle = convertView.findViewById(R.id.item_title);
         TextView timeTv = convertView.findViewById(R.id.item_time);
         TextView tvContent = convertView.findViewById(R.id.item_content);
-        tvTitle.setText(memo.getContent());
+        tvTitle.setText(memo.getTitle());
         tvContent.setText(memo.getContent());
 
         long timestamp = memo.getTimestamp();

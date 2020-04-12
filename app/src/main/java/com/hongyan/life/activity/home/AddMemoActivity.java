@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 
 import com.hongyan.life.MyApplication;
 import com.hongyan.life.R;
+import com.hongyan.life.activity.bill.AddRecordActivity;
 import com.hongyan.life.bean.Memo;
 import com.hongyan.life.bean.MemoDao;
 
@@ -57,10 +58,12 @@ public class AddMemoActivity extends Activity {
                 String conent = etContent.getText().toString();
 
                 if (TextUtils.isEmpty(title)) {
-                    title = "标题";
+                    Toast.makeText(AddMemoActivity.this, "请输入标题", Toast.LENGTH_SHORT).show();
+                    return;
                 }
                 if (TextUtils.isEmpty(conent)) {
-                    conent = "内容";
+                    Toast.makeText(AddMemoActivity.this, "请输入内容", Toast.LENGTH_SHORT).show();
+                    return;
                 }
 
                 Intent intent = new Intent();

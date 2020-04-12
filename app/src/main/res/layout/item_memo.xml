@@ -13,7 +13,6 @@
         android:layout_marginBottom="@dimen/ds10"
         android:ellipsize="end"
         android:maxLines="1"
-        android:text="标题"
         android:textColor="@color/black"
         android:textSize="14sp" />
 
@@ -23,7 +22,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/item_title"
         android:layout_marginRight="@dimen/ds10"
-        android:text="00-00 00:00"
         android:textColor="#444444"
         android:textSize="12sp" />
 
@@ -34,7 +32,7 @@
         android:layout_below="@id/item_title"
         android:layout_toRightOf="@id/item_time"
         android:lines="1"
-        android:text="我是一段描述"
+        android:ellipsize="end"
         android:textColor="#555555"
         android:textSize="12sp" />
 

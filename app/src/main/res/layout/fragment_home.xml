@@ -87,15 +87,18 @@
         </LinearLayout>
 
 
-        <ImageView
+        <TextView
             android:id="@+id/fragment_home_info_tips_layout"
-            android:layout_width="@dimen/ds40"
-            android:layout_height="@dimen/ds40"
-            android:layout_alignParentTop="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:layout_gravity="center_vertical"
             android:layout_margin="@dimen/ds20"
-            android:src="@drawable/icon_more" />
+            android:text="手机状态"
+            android:paddingHorizontal="@dimen/ds10"
+            android:paddingVertical="@dimen/ds6"
+            android:textColor="@color/white"
+            android:background="@drawable/shape_round_device_info"/>
+
 
         <ImageView
             android:id="@+id/fragment_home_weather_img"
@@ -154,7 +157,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:background="@color/appColorPositive"/>
+            android:background="@color/appColorPositive" />
 
         <ListView
             android:id="@+id/fragment_home_memo_list"

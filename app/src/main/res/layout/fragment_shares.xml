@@ -5,17 +5,8 @@
     android:background="@color/c_bg_a"
     android:orientation="vertical">
 
-    <TextView
-        android:visibility="gone"
-        android:id="@+id/fragment_shares_title"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:background="@color/white"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:textSize="18sp" />
-
     <LinearLayout
+        android:id="@+id/layout_title"
         android:layout_width="match_parent"
         android:layout_height="@dimen/ds100"
         android:layout_marginLeft="@dimen/ds30"
@@ -23,18 +14,20 @@
         android:layout_marginRight="@dimen/ds30"
         android:background="@color/white"
         android:gravity="center_vertical"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/ds30">
 
         <EditText
-            android:hint="股票代码 例:000001"
             android:id="@+id/edit_input"
             android:layout_width="0dp"
             android:layout_height="@dimen/ds100"
             android:layout_weight="1"
             android:background="@null"
-            android:textSize="16sp"
+            android:focusable="false"
+            android:hint="股票代码 例:000001"
             android:paddingLeft="@dimen/ds30"
-            android:textCursorDrawable="@drawable/drawable_cusor" />
+            android:textCursorDrawable="@drawable/drawable_cusor"
+            android:textSize="16sp" />
 
         <ImageView
             android:id="@+id/image_search"
@@ -44,87 +37,21 @@
             android:src="@drawable/icon_search" />
     </LinearLayout>
 
-    <ScrollView
-        android:scrollbars="none"
-        android:paddingLeft="15dp"
-        android:paddingRight="15dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/white"
+    <com.hongyan.life.activity.webview.WebViewProgressView
+        android:id="@+id/progress"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="2dp"
+        android:background="#FFFFFF" />
 
-        <LinearLayout
-            android:orientation="vertical"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <WebView
+            android:id="@+id/webView"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp">
-
-            <TextView
-                android:id="@+id/kaipan"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/dangqian"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:paddingTop="3dp"
-            android:paddingBottom="3dp">
-
-            <TextView
-                android:id="@+id/today_min"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-
-            <TextView
-                android:id="@+id/today_max"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:id="@+id/fenshi_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white" />
-
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:id="@+id/day_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white" />
-
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:id="@+id/week_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white" />
-
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:id="@+id/month_img"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white" />
-        </LinearLayout>
-    </ScrollView>
+            android:layout_height="match_parent" />
+    </RelativeLayout>
 </LinearLayout>
