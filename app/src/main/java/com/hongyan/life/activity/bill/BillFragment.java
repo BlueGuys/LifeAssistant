@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
@@ -18,6 +19,7 @@ import com.hongyan.life.R;
 import com.hongyan.life.activity.BaseFragment;
 import com.hongyan.life.utils.BillUtils;
 import com.hongyan.life.utils.DateUtils;
+import com.hongyan.life.view.CommonDialog;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -41,6 +43,8 @@ public class BillFragment extends BaseFragment {
     private static final int REQUEST_CODE = 1000;
 
     String nowDateStr;
+
+    private Date currentDate;
 
 
     @Override
@@ -82,7 +86,28 @@ public class BillFragment extends BaseFragment {
             });
 
             listView.setAdapter(mAdapter);
-            notifyData(new Date());
+            listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+                @Override
+                public boolean onItemLongClick(final AdapterView<?> parent, View view, final int position, long id) {
+                    CommonDialog commonDialog = new CommonDialog(getActivity(), new CommonDialog.OnClickEvent() {
+                        @Override
+                        public void onClick(boolean bool) {
+                            if (bool) {
+                                Record record = (Record) parent.getAdapter().getItem(position);
+                                BillUtils.delRecord(record.getRecordId());
+                                notifyData();
+                            }
+                        }
+                    }
+                    );
+                    commonDialog.show();
+                    commonDialog.setTitle("确定删除该条记录？");
+                    commonDialog.setDefine("确定");
+                    return true;
+                }
+            });
+            currentDate = new Date();
+            notifyData();
         }
 
         {
@@ -121,12 +146,12 @@ public class BillFragment extends BaseFragment {
             record.setType(type);
             record.setTimeStap(System.currentTimeMillis());
             BillUtils.addRecord(record);
-            notifyData(new Date());
+            notifyData();
         }
     }
 
-    private void notifyData(Date date) {
-        String monthStr = DateUtils.formatDate(date, DateUtils.YEAR_MONTH);
+    private void notifyData() {
+        String monthStr = DateUtils.formatDate(currentDate, DateUtils.YEAR_MONTH);
         ArrayList<Record> records = null;
         try {
             records = (ArrayList<Record>) BillUtils.getMonthAll(monthStr);
@@ -156,8 +181,9 @@ public class BillFragment extends BaseFragment {
         TimePickerView pvTime = new TimePickerBuilder(getActivity(), new OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {
+                currentDate = date;
                 nowDateStr = DateUtils.formatDate(date, DateUtils.YEAR_MONTH);
-                notifyData(date);
+                notifyData();
             }
         }).setType(new boolean[]{true, true, false, false, false, false})// 默认全部显示
                 .setCancelText("取消")//取消按钮文字

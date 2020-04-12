@@ -43,7 +43,7 @@ public class BillAdapter extends BaseAdapter {
     }
 
     @Override
-    public Object getItem(int position) {
+    public Record getItem(int position) {
         if (mList.size() > 0) {
             return mList.get(position);
         }
