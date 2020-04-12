@@ -125,7 +125,6 @@ public class BillFragment extends BaseFragment {
         }
     }
 
-
     private void notifyData(Date date) {
         String monthStr = DateUtils.formatDate(date, DateUtils.YEAR_MONTH);
         ArrayList<Record> records = null;
@@ -135,6 +134,16 @@ public class BillFragment extends BaseFragment {
             e.printStackTrace();
         }
         mAdapter.setData(records);
+        float income = 0;
+        float expand = 0;
+        try {
+            income = BillUtils.getMonthRecord(1, monthStr);
+            expand = BillUtils.getMonthRecord(2, monthStr);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        tvShouru.setText(String.valueOf(income));
+        tvZhichu.setText(String.valueOf(expand));
     }
 
     private void showTimeDialog() {
