@@ -20,6 +20,8 @@
             android:layout_height="@dimen/ds100"
             android:layout_weight="1"
             android:background="@null"
+            android:lines="1"
+            android:imeOptions="actionSearch"
             android:paddingLeft="@dimen/ds30"
             android:textCursorDrawable="@drawable/drawable_cusor" />
 
@@ -51,7 +53,7 @@
             android:id="@+id/tv_result_A1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="苹果"
+            android:text=""
             android:textSize="15sp" />
 
         <TextView
@@ -66,7 +68,7 @@
             android:id="@+id/tv_result_B1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="苹果"
+            android:text=""
             android:textSize="15sp" />
 
         <TextView

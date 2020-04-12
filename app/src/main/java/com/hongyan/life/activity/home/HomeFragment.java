@@ -44,7 +44,6 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     private View view;
 
     RelativeLayout weatherLayout;
-    LinearLayout weatherCityLayout;
     TextView weatherCityName;
 
     private Button button;
@@ -84,7 +83,6 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
     private void initWeather() {
         weatherLayout = view.findViewById(R.id.fragment_home_weather_layout);
-        weatherCityLayout = view.findViewById(R.id.fragment_home_city_layout);
         weatherCityName = view.findViewById(R.id.fragment_home_city_name);
         weatherImg = view.findViewById(R.id.fragment_home_weather_img);
         tipsTv = view.findViewById(R.id.fragment_home_weather_tips);
@@ -192,8 +190,8 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                             weatherImg.setImageResource(getImageIdByWea(wea_img));
                             tipsTv.setText(weatherNow.getAir_tips());
                             airLevelTv.setText(weatherNow.getAir_level());
-                            tempTv.setText(weatherNow.getTem() + "℃");
-                            temp12Tv.setText(weatherNow.getTem1() + " / " + weatherNow.getTem2());
+                            tempTv.setText(weatherNow.getTem());
+                            temp12Tv.setText(weatherNow.getTem1() + "/" + weatherNow.getTem2());
                             weatherLayout.setBackgroundColor(getWeatherBackImg(weatherNow.getWea_img()));
                         } catch (Exception e) {
                         }
@@ -240,6 +238,11 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
     }
 
+    /**
+     * 背景
+     * @param wea_img
+     * @return
+     */
     private int getWeatherBackImg(String wea_img) {
         switch (wea_img) {
             case "wu":
@@ -253,8 +256,9 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
             case "shachen":
                 return R.color.gray_8f;
             case "qing":
+                return R.color.red;
             default:
-                return R.color.royalblue;
+                return R.color.appColorPositive;
         }
     }
 

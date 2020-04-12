@@ -75,11 +75,11 @@ public class AnalysisActivity extends BaseActivity {
 //                    e.printStackTrace();
 //                }
                 if (currentType==1){
-                    type1Layout.setVisibility(View.VISIBLE);
-                    type2Layout.setVisibility(View.GONE);
-                }else{
                     type1Layout.setVisibility(View.GONE);
                     type2Layout.setVisibility(View.VISIBLE);
+                }else{
+                    type1Layout.setVisibility(View.VISIBLE);
+                    type2Layout.setVisibility(View.GONE);
                 }
 
             }

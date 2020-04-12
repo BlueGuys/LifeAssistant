@@ -30,7 +30,7 @@
         android:id="@+id/activity_bill_analysis_type1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible">
+        android:visibility="gone">
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/activity_bill_analysis_linechart1"
@@ -62,7 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:visibility="gone">
+        android:visibility="visible">
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/activity_bill_analysis_linechart2"
