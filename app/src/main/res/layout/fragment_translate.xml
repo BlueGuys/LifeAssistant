@@ -53,7 +53,7 @@
             android:id="@+id/tv_result_A1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="苹果"
+            android:text=""
             android:textSize="15sp" />
 
         <TextView
@@ -68,7 +68,7 @@
             android:id="@+id/tv_result_B1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="苹果"
+            android:text=""
             android:textSize="15sp" />
 
         <TextView
