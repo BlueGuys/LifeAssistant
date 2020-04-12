@@ -32,7 +32,6 @@ import com.lljjcoder.bean.ProvinceBean;
 import com.lljjcoder.style.cityjd.JDCityConfig;
 import com.lljjcoder.style.cityjd.JDCityPicker;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -161,6 +160,10 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     }
 
     private void requestWeather(String name) {
+        if (name == null || name.trim().length() == 0) {
+            return;
+        }
+        name = name.replace("市", "");
         String url = "http://www.tianqiapi.com/api?version=v6&appid=45324354&appsecret=lw9iMb8d";
         try {
             url += "&city=" + name;
@@ -288,8 +291,6 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         commonDialog.show();
         commonDialog.setTitle("确定删除该条记录？");
         commonDialog.setDefine("确定");
-
-
         return true;
     }
 
