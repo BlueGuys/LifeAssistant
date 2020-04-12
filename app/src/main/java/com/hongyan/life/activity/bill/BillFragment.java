@@ -3,7 +3,6 @@ package com.hongyan.life.activity.bill;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +19,7 @@ import com.hongyan.life.activity.BaseFragment;
 import com.hongyan.life.utils.BillUtils;
 import com.hongyan.life.utils.DateUtils;
 
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -41,7 +41,6 @@ public class BillFragment extends BaseFragment {
     private static final int REQUEST_CODE = 1000;
 
     String nowDateStr;
-
 
 
     @Override
@@ -70,7 +69,7 @@ public class BillFragment extends BaseFragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), AnalysisActivity.class);
-                    intent.putExtra(AnalysisActivity.DATE_EXTRA,nowDateStr);
+                    intent.putExtra(AnalysisActivity.DATE_EXTRA, nowDateStr);
                     getActivity().startActivity(intent);
                 }
             });
@@ -83,12 +82,12 @@ public class BillFragment extends BaseFragment {
             });
 
             listView.setAdapter(mAdapter);
-            notifyData();
+            notifyData(new Date());
         }
 
         {
             try {
-                nowDateStr = DateUtils.dateToString(new Date(),DateUtils.YEAR_MONTH);
+                nowDateStr = DateUtils.dateToString(new Date(), DateUtils.YEAR_MONTH);
             } catch (Exception e) {
                 e.printStackTrace();
             }
@@ -122,18 +121,20 @@ public class BillFragment extends BaseFragment {
             record.setType(type);
             record.setTimeStap(System.currentTimeMillis());
             BillUtils.addRecord(record);
-            notifyData();
+            notifyData(new Date());
         }
     }
 
-    private void notifyData() {
-        ArrayList<Record> records = (ArrayList<Record>) BillUtils.getAll();
-        mAdapter.setData(records);
-    }
 
-    private void refresh(Date date) {
-        Log.e("hhh", DateUtils.formatDate(date, DateUtils.YEAR_MONTH));
-        notifyData();
+    private void notifyData(Date date) {
+        String monthStr = DateUtils.formatDate(date, DateUtils.YEAR_MONTH);
+        ArrayList<Record> records = null;
+        try {
+            records = (ArrayList<Record>) BillUtils.getRecordListMonth(1, monthStr);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        mAdapter.setData(records);
     }
 
     private void showTimeDialog() {
@@ -146,12 +147,8 @@ public class BillFragment extends BaseFragment {
         TimePickerView pvTime = new TimePickerBuilder(getActivity(), new OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {
-                try {
-                    nowDateStr = DateUtils.dateToString(date,DateUtils.YEAR_MONTH);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-                refresh(date);
+                nowDateStr = DateUtils.formatDate(date, DateUtils.YEAR_MONTH);
+                notifyData(date);
             }
         }).setType(new boolean[]{true, true, false, false, false, false})// 默认全部显示
                 .setCancelText("取消")//取消按钮文字
