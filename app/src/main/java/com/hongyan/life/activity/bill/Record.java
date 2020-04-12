@@ -1,8 +1,15 @@
 package com.hongyan.life.activity.bill;
 
+import com.hongyan.life.utils.DateUtils;
+
 import org.greenrobot.greendao.annotation.Entity;
 import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
+import org.greenrobot.greendao.annotation.Transient;
+
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 @Entity
 public class Record {
@@ -33,9 +40,6 @@ public class Record {
      * 备注
      */
     public String remark;
-
-
-
 
 
     @Generated(hash = 1436135312)
@@ -101,4 +105,21 @@ public class Record {
     public void setRecordId(Long recordId) {
         this.recordId = recordId;
     }
+
+    public String getDateTime(){
+        try {
+            return DateUtils.dateToString(new Date(timeStap),DateUtils.yyyyMMDD);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public int getDayofMonth(){
+        Date date = new Date(timeStap);
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
+        cal.setTime(date);
+        return cal.get(Calendar.DAY_OF_MONTH);
+    }
+
 }

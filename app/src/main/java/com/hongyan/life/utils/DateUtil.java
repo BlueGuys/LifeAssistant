@@ -321,4 +321,11 @@ public class DateUtil {
     }
 
 
+    public static Date getNextMonthDate(Date date){
+        Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+8"));
+        cal.setTime(date);
+        cal.add(Calendar.MONTH,1);
+        return  cal.getTime();
+    }
+
 }
