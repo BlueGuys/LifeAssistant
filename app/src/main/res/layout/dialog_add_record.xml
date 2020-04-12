@@ -9,25 +9,27 @@
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ds100"
+        android:layout_height="@dimen/ds80"
         android:background="@color/appColorPositive"
         android:gravity="center"
         android:text="记一笔"
         android:textColor="@color/white"
-        android:textSize="11sp" />
+        android:textSize="13sp" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/ds100"
-        android:layout_marginVertical="@dimen/ds40">
+        android:layout_marginVertical="@dimen/ds40"
+        android:paddingHorizontal="@dimen/ds30">
 
         <TextView
             android:id="@+id/tv_amount"
-            android:layout_width="@dimen/ds150"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:gravity="center"
+            android:layout_marginRight="@dimen/ds20"
             android:text="金额:" />
 
         <EditText
@@ -41,7 +43,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:background="@color/appColorPositive" />
+        android:background="#444444" />
 
     <Button
         android:id="@+id/btn_confirm"
