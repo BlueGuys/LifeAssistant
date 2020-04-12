@@ -129,7 +129,7 @@ public class BillFragment extends BaseFragment {
         String monthStr = DateUtils.formatDate(date, DateUtils.YEAR_MONTH);
         ArrayList<Record> records = null;
         try {
-            records = (ArrayList<Record>) BillUtils.getRecordListMonth(1, monthStr);
+            records = (ArrayList<Record>) BillUtils.getMonthAll(monthStr);
         } catch (ParseException e) {
             e.printStackTrace();
         }
