@@ -41,6 +41,10 @@ public class BillFragment extends BaseFragment {
 
     private static final int REQUEST_CODE = 1000;
 
+    String nowDateStr;
+
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (view == null) {
@@ -67,6 +71,7 @@ public class BillFragment extends BaseFragment {
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), AnalysisActivity.class);
+                    intent.putExtra(AnalysisActivity.DATE_EXTRA,nowDateStr);
                     getActivity().startActivity(intent);
                 }
             });
@@ -81,6 +86,16 @@ public class BillFragment extends BaseFragment {
             listView.setAdapter(mAdapter);
             notifyData();
         }
+
+        {
+            try {
+                nowDateStr = DateUtils.dateToString(new Date(),DateUtils.YEAR_MONTH);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+
+
         return view;
     }
 
@@ -132,6 +147,11 @@ public class BillFragment extends BaseFragment {
         TimePickerView pvTime = new TimePickerBuilder(getActivity(), new OnTimeSelectListener() {
             @Override
             public void onTimeSelect(Date date, View v) {
+                try {
+                    nowDateStr = DateUtils.dateToString(date,DateUtils.YEAR_MONTH);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
                 refresh(date);
             }
         }).setType(new boolean[]{true, true, false, false, false, false})// 默认全部显示

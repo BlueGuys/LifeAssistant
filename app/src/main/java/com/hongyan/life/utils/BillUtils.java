@@ -129,6 +129,16 @@ public class BillUtils {
     }
 
 
+
+    public static float getMonthRecord(int type,String month) throws ParseException {
+        float sum = 0;
+        List<Record> recordListMonth = getRecordListMonth(type,month);
+        for (Record r : recordListMonth) {
+            sum += r.getAmount();
+        }
+        return sum;
+    }
+
     public static List<Record> getRecordListWeek(int type) {
         long startTime = DateUtil.getBeginDayOfWeek().getTime();
         long endTime = DateUtil.getEndDayOfWeek().getTime();
