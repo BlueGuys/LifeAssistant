@@ -22,7 +22,8 @@
         android:usesCleartextTraffic="true">
         <activity
             android:name=".activity.MainActivity"
-            android:theme="@style/ActivityTheme">
+            android:theme="@style/ActivityTheme"
+            android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
