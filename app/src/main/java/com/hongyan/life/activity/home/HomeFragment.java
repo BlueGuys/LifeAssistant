@@ -9,7 +9,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,6 +22,7 @@ import com.hongyan.life.bean.MemoDao;
 import com.hongyan.life.bean.WeatherNow;
 import com.hongyan.life.net.LFHttpRequestUtils;
 import com.hongyan.life.net.LFNetworkCallback;
+import com.hongyan.life.utils.DateUtils;
 import com.hongyan.life.utils.GsonUtils;
 import com.hongyan.life.view.CommonDialog;
 import com.lljjcoder.Interface.OnCityItemClickListener;
@@ -33,6 +33,7 @@ import com.lljjcoder.style.cityjd.JDCityConfig;
 import com.lljjcoder.style.cityjd.JDCityPicker;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -48,7 +49,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
     private Button button;
     private ImageView weatherImg;
-    private TextView tipsTv, airLevelTv, tempTv, temp12Tv;
+    private TextView tipsTv, airLevelTv, tempTv, temp12Tv, tvTianqiTime;
 
     private ImageView memoAdd;
     private ListView memoList;
@@ -89,6 +90,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         airLevelTv = view.findViewById(R.id.fragment_home_weather_air_level);
         tempTv = view.findViewById(R.id.fragment_home_weather_temp);
         temp12Tv = view.findViewById(R.id.fragment_home_weather_temp12);
+        tvTianqiTime = view.findViewById(R.id.tv_tianqi_time);
 
         weatherCityName.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -193,6 +195,9 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                             tempTv.setText(weatherNow.getTem());
                             temp12Tv.setText(weatherNow.getTem1() + "/" + weatherNow.getTem2());
                             weatherLayout.setBackgroundColor(getWeatherBackImg(weatherNow.getWea_img()));
+                            Date date = new Date();
+                            String ss = DateUtils.formatDate(date, DateUtils.MONTH_DAY_HHmm);
+                            tvTianqiTime.setText(ss);
                         } catch (Exception e) {
                         }
                     }

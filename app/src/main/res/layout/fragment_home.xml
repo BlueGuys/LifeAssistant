@@ -84,6 +84,16 @@
                     android:textSize="15sp" />
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/tv_tianqi_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ds4"
+                android:layout_marginRight="@dimen/ds30"
+                android:gravity="center"
+                android:textColor="@color/home_weather_text"
+                android:textSize="12sp" />
+
         </LinearLayout>
 
 
