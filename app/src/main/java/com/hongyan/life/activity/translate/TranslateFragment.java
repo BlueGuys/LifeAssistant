@@ -1,6 +1,7 @@
 package com.hongyan.life.activity.translate;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class TranslateFragment extends BaseFragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (view==null){
+        if (view == null) {
             view = inflater.inflate(R.layout.fragment_translate, container, false);
             etInput = view.findViewById(R.id.edit_input);
             imageSearch = view.findViewById(R.id.image_search);
@@ -51,6 +52,19 @@ public class TranslateFragment extends BaseFragment {
                 public void onClick(View v) {
                     search(etInput.getText().toString());
                 }
+            });
+            etInput.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+
+                @Override
+                public boolean onEditorAction(TextView v, int actionId,
+                                              KeyEvent event) {
+                    if ((actionId == 0 || actionId == 3) && event != null) {
+                        search(etInput.getText().toString());
+                        return true;
+                    }
+                    return false;
+                }
+
             });
         }
         return view;
@@ -89,7 +103,7 @@ public class TranslateFragment extends BaseFragment {
 
                             StringBuilder builder = new StringBuilder();
                             ArrayList<TranslateBean.Web> web = bean.web;
-                            for(TranslateBean.Web w: web){
+                            for (TranslateBean.Web w : web) {
                                 builder.append("·");
                                 builder.append(w.key);
                                 builder.append("\n");
