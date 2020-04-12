@@ -1,24 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/ds100"
-    android:background="@color/c_bg_a">
+    android:layout_height="@dimen/ds130"
+    android:paddingHorizontal="@dimen/ds30">
 
     <ImageView
         android:id="@+id/icon"
-        android:layout_width="@dimen/ds40"
-        android:layout_height="@dimen/ds40"
+        android:layout_width="@dimen/ds60"
+        android:layout_height="@dimen/ds60"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/ds30"
         android:src="@drawable/ic_launcher" />
 
-    <TextView
-        android:id="@+id/tv_title"
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_centerVertical="true"
         android:layout_toRightOf="@id/icon"
-        android:text="aaaaa" />
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="aaaaa"
+            android:textColor="@color/black"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2019-12：00"
+            android:textColor="#999999"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
 
     <TextView
         android:id="@+id/tv_amount"
@@ -26,6 +46,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:textSize="20sp"
+        android:textColor="@color/c_main_red_n"
         android:text="ITEM" />
 
 </RelativeLayout>

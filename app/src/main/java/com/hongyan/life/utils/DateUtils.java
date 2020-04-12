@@ -38,6 +38,7 @@ public final class DateUtils {
     public static final String LOCALE_DATE_FORMAT = "yyyy年M月d日 HH:mm:ss";
     public static final String DB_DATA_FORMAT = "yyyy-MM-DD HH:mm:ss";
     public static final String NEWS_ITEM_DATE_FORMAT = "hh:mm M月d日 yyyy";
+    public static final String YEAR_MONTH = "yyyy-MM";
 
 
     public static String dateToString(Date date, String pattern)

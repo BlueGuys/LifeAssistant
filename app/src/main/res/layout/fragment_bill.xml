@@ -17,34 +17,138 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/ds70">
+                android:layout_height="@dimen/ds100">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="记帐"
-                    android:textColor="@color/white" />
-
-                <ImageView
-                    android:id="@+id/btn_analysis"
-                    android:layout_width="@dimen/ds80"
-                    android:layout_height="@dimen/ds80"
-                    android:layout_alignParentEnd="true"
-                    android:layout_marginRight="@dimen/ds50"
-                    android:layout_centerVertical="true"
-                    android:src="@drawable/icon_service_s" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp">
+                    android:text="记帐本"
+                    android:textColor="@color/white"
+                    android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/btn_analysis"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="余额" />
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="@dimen/ds50"
+                    android:text="图表"
+                    android:textColor="@color/white"
+                    android:textSize="17sp" />
+
             </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/layout_time"
+                    android:layout_width="80dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/ds30"
+                    android:gravity="center_vertical|left"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/ds40">
+
+                    <TextView
+                        android:id="@+id/tv_year"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2020"
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ds15"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:textSize="14sp">
+
+                        <TextView
+                            android:id="@+id/tv_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="@dimen/ds7"
+                            android:text="4月"
+                            android:textColor="@color/white"
+                            android:textSize="17sp" />
+
+                        <ImageView
+                            android:layout_width="@dimen/ds20"
+                            android:layout_height="@dimen/ds20"
+                            android:src="@drawable/icon_sanjiao" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="1px"
+                    android:layout_height="50dp"
+                    android:background="@color/white" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/ds30"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|left"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/ds30">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="收入"
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_total_income"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ds20"
+                        android:text="100.00"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="@dimen/ds30"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical|left"
+                    android:orientation="vertical"
+                    android:paddingLeft="@dimen/ds30">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="支出"
+                        android:textColor="@color/white"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/tv_total_zhichu"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/ds20"
+                        android:text="100.00"
+                        android:textColor="@color/white"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+            </LinearLayout>
         </LinearLayout>
 
         <ListView
@@ -52,7 +156,8 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:background="@color/white" />
+            android:background="@color/white"
+            android:listSelector="@android:color/transparent" />
     </LinearLayout>
 
     <ImageView
