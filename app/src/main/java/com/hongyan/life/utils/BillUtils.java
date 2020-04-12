@@ -131,10 +131,9 @@ public class BillUtils {
     }
 
 
-
-    public static float getMonthRecord(int type,String month) throws ParseException {
+    public static float getMonthRecord(int type, String month) throws ParseException {
         float sum = 0;
-        List<Record> recordListMonth = getRecordListMonth(type,month);
+        List<Record> recordListMonth = getRecordListMonth(type, month);
         for (Record r : recordListMonth) {
             sum += r.getAmount();
         }
@@ -187,7 +186,7 @@ public class BillUtils {
         long endTime = DateUtil.getDayStartTime(nextMonthDate).getTime();
         RecordDao recordDao = MyApplication.getDaoSession().getRecordDao();
         List<Record> list = recordDao.queryBuilder().
-                where( RecordDao.Properties.TimeStap.between(startTime, endTime))
+                where(RecordDao.Properties.TimeStap.between(startTime, endTime))
                 .orderDesc(RecordDao.Properties.TimeStap)
                 .list();
         return list;
@@ -210,9 +209,24 @@ public class BillUtils {
         List<Record> recordListMonth = getRecordListMonth(type, month);
         for (Record r : recordListMonth) {
             int dayofMonth = r.getDayofMonth();
-            map.put(dayofMonth , map.get(dayofMonth)+r.getAmount() );
+            map.put(dayofMonth, map.get(dayofMonth) + r.getAmount());
         }
         return map;
     }
+
+
+    public static LinkedHashMap<Integer, Float> getMonthCategoryInfo(int type, String montStr) throws ParseException {
+        List<Record> recordListMonth = getRecordListMonth(type, montStr);
+        LinkedHashMap<Integer, Float> map = new LinkedHashMap<>();
+        for (Record r : recordListMonth) {
+            if(map.containsKey(r.getCategory())){
+                map.put(r.getCategory(),map.get(r.getCategory())+r.getAmount());
+            }else{
+                map.put(r.getCategory(),r.getAmount());
+            }
+        }
+        return map;
+    }
+
 
 }

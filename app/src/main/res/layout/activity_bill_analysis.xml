@@ -26,31 +26,62 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:visibility="visible"
+        android:orientation="vertical"
         android:id="@+id/activity_bill_analysis_type1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:visibility="visible">
 
-    <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/activity_bill_analysis_linechart1"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        />
+        <com.github.mikephil.charting.charts.LineChart
+            android:id="@+id/activity_bill_analysis_linechart1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/activity_bill_analysis_piechart1"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_margin="10dp"
+            android:padding="20dp" />
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/activity_bill_analysis_type1_nopiedata"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:visibility="gone"
+            android:text="暂无分类统计信息"
+            />
+
 
     </LinearLayout>
 
 
-
     <LinearLayout
-        android:visibility="gone"
         android:id="@+id/activity_bill_analysis_type2"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
 
         <com.github.mikephil.charting.charts.LineChart
             android:id="@+id/activity_bill_analysis_linechart2"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
+            android:layout_height="200dp" />
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/activity_bill_analysis_piechart2"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_margin="10dp"
+            android:padding="20dp" />
+        <TextView
+            android:gravity="center"
+            android:id="@+id/activity_bill_analysis_type2_nopiedata"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:visibility="gone"
+            android:text="暂无分类统计信息"
             />
 
     </LinearLayout>
