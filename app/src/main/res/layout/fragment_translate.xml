@@ -45,7 +45,6 @@
             android:id="@+id/tv_result_A"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Apple"
             android:textSize="17sp"
             android:textStyle="bold" />
 
