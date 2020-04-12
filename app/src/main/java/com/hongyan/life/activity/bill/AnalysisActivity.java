@@ -103,7 +103,7 @@ public class AnalysisActivity extends BaseActivity {
         noPieData1 = findViewById(R.id.activity_bill_analysis_type1_nopiedata);
         noPieData2 = findViewById(R.id.activity_bill_analysis_type2_nopiedata);
 
-
+        headView.select(1);
 
         initView();
     }
