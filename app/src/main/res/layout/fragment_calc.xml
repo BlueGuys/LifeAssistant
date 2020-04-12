@@ -1,20 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android= "http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android= "http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/linearLayout"
     android:gravity="bottom"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <TextView
+        android:paddingLeft="@dimen/ds30"
+        android:paddingRight="@dimen/ds30"
+        android:layout_above="@+id/fragment_calc_btnslayout"
         android:id="@+id/fragment_calc_expression"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="24dp"
+        android:textSize="32sp"
         android:text=""
-        android:layout_weight="2"/>
+        android:textColor="@color/black"
+        android:layout_marginBottom="25dp"
+        />
 
     <LinearLayout
+        android:paddingLeft="@dimen/ds30"
+        android:paddingRight="@dimen/ds30"
+        android:paddingBottom="@dimen/ds30"
+        android:id="@+id/fragment_calc_btnslayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <LinearLayout
+
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -54,6 +70,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -93,6 +110,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -132,6 +150,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -171,6 +190,7 @@
     </LinearLayout>
 
     <LinearLayout
+        android:layout_marginTop="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -201,4 +221,7 @@
             android:onClick="onClick"/>
     </LinearLayout>
 
-</LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

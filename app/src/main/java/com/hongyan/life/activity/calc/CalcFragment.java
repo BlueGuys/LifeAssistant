@@ -16,14 +16,12 @@ import java.util.Stack;
 public class CalcFragment extends BaseFragment implements View.OnClickListener {
 
     private View view;
-    private LinearLayout roorLayout;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_calc, container, false);
-            roorLayout = view.findViewById(R.id.linearLayout);
             initView();
         }
         return view;
