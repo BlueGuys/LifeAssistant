@@ -42,6 +42,7 @@ import com.github.mikephil.charting.utils.MPPointF;
 import com.github.mikephil.charting.utils.Utils;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.hongyan.life.R;
+import com.hongyan.life.activity.bill.Category;
 import com.hongyan.life.activity.bill.Record;
 import com.hongyan.life.utils.BillUtils;
 
@@ -62,6 +63,7 @@ public class TestActivity extends Activity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Category.init();
         setContentView(R.layout.activity_test);
         lineChart = findViewById(R.id.activity_test_linechart);
         pieChart = findViewById(R.id.activity_test_piechart);
@@ -72,7 +74,8 @@ public class TestActivity extends Activity {
                 try {
                     LinkedHashMap<Integer, Float> monthInfo = BillUtils.getMonthInfo(1, "2020-04");
                     initLineChartData(monthInfo);
-                    initPieChar();
+                    LinkedHashMap<Integer, Float> monthCategoryInfo   = BillUtils.getMonthCategoryInfo(1, "2020-04");
+                    initPieChar(monthCategoryInfo);
                     Log.d("t",monthInfo.toString());
                 } catch (ParseException e) {
                     e.printStackTrace();
@@ -124,7 +127,7 @@ public class TestActivity extends Activity {
     }
 
 
-    private  void  initPieChar(){
+    private  void  initPieChar(LinkedHashMap<Integer, Float> monthCategoryInfo) throws ParseException {
 
         pieChart.setUsePercentValues(true);
         pieChart.getDescription().setEnabled(false);
@@ -134,6 +137,7 @@ public class TestActivity extends Activity {
         pieChart.setDrawHoleEnabled(true);
         pieChart.setHoleColor(Color.WHITE);
         pieChart.setTransparentCircleColor(Color.WHITE);
+        pieChart.setEntryLabelColor(Color.BLACK);
         pieChart.setTransparentCircleAlpha(110);
 
         pieChart.setHoleRadius(58f);
@@ -148,15 +152,19 @@ public class TestActivity extends Activity {
         pieChart.animateY(1400, Easing.EaseInOutQuad);
 
 
-
         ArrayList<PieEntry> entries = new ArrayList<>();
 
         // NOTE: The order of the entries when being added to the entries array determines their position around the center of
         // the chart.
-        for (int i = 0; i < 5 ; i++) {
-            entries.add(new PieEntry(20,i+""));
+//        for (int i = 0; i < 5 ; i++) {
+//            entries.add(new PieEntry(20,i+""));
+//        }
+        Set<Integer> integers = monthCategoryInfo.keySet();
+        for (int i:integers){
+            entries.add(new PieEntry(monthCategoryInfo.get(i), Category.getDescById(i)));
         }
-        PieDataSet dataSet = new PieDataSet(entries, "123456");
+
+        PieDataSet dataSet = new PieDataSet(entries, "");
 
         dataSet.setDrawIcons(false);
 
@@ -195,10 +203,8 @@ public class TestActivity extends Activity {
         data.setValueTextColor(Color.BLACK);
 //        data.setValueTypeface(tfLight);
         pieChart.setData(data);
-
         // undo all highlights
         pieChart.highlightValues(null);
-
         pieChart.invalidate();
 
 
