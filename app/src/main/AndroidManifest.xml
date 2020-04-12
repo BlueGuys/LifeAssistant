@@ -47,7 +47,13 @@
         </activity>
 
         <activity
-            android:name=".activity.test.TestActivity"
+        android:name=".activity.test.TestActivity"
+        android:theme="@style/ActivityTheme" >
+
+    </activity>
+
+        <activity
+            android:name=".activity.shares.ShareActivity"
             android:theme="@style/ActivityTheme" >
 
         </activity>
