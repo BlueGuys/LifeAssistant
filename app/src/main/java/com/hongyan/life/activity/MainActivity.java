@@ -2,7 +2,6 @@ package com.hongyan.life.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 
 import com.hongyan.life.R;
 import com.hongyan.life.activity.bill.BillFragment;
@@ -13,6 +12,7 @@ import com.hongyan.life.activity.shares.SharesFragment;
 import com.hongyan.life.activity.translate.TranslateFragment;
 import com.hongyan.life.tab.SubPage;
 import com.hongyan.life.tab.TabContainer;
+import com.lljjcoder.style.citylist.utils.CityListLoader;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,6 +36,7 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Category.init();
+        CityListLoader.getInstance().loadCityData(this);
         mViewPager = findViewById(R.id.vp_content);
         tabContainer = findViewById(R.id.tabContainer);
         contentAdapter = new ContentPagerAdapter(getSupportFragmentManager());
