@@ -15,8 +15,8 @@
         android:layout_height="200dp"/>
 
 
-    <com.github.mikephil.charting.charts.BarChart
-        android:id="@+id/activity_test_barchart"
+    <com.github.mikephil.charting.charts.PieChart
+        android:id="@+id/activity_test_piechart"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_margin="10dp"

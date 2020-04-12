@@ -177,6 +177,14 @@ public class BillUtils {
         return sum;
     }
 
+    public static List<Record> getMonthAll(String montStr) throws ParseException {
+        List<Record> records = new ArrayList<>();
+        List<Record> recordListMonth1 = getRecordListMonth(1, montStr);
+        List<Record> recordListMonth2 = getRecordListMonth(2, montStr);
+        records.addAll(recordListMonth1);
+        records.addAll(recordListMonth2);
+        return records;
+    }
 
     public static List<Record> getAll() {
         List<Record> records = MyApplication.getDaoSession().getRecordDao().loadAll();
