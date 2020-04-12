@@ -32,7 +32,6 @@ import com.lljjcoder.bean.ProvinceBean;
 import com.lljjcoder.style.cityjd.JDCityConfig;
 import com.lljjcoder.style.cityjd.JDCityPicker;
 
-import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -292,8 +291,6 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         commonDialog.show();
         commonDialog.setTitle("确定删除该条记录？");
         commonDialog.setDefine("确定");
-
-
         return true;
     }
 
