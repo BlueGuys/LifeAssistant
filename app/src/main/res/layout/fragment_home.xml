@@ -100,7 +100,7 @@
         <ImageView
             android:id="@+id/fragment_home_weather_img"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/ds140"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/ds60"

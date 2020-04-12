@@ -256,8 +256,9 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
             case "shachen":
                 return R.color.gray_8f;
             case "qing":
+                return R.color.red;
             default:
-                return R.color.royalblue;
+                return R.color.appColorPositive;
         }
     }
 
