@@ -162,12 +162,12 @@
 
     <ImageView
         android:id="@+id/btn_add"
-        android:layout_width="@dimen/ds80"
-        android:layout_height="@dimen/ds80"
+        android:layout_width="@dimen/ds100"
+        android:layout_height="@dimen/ds100"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginRight="@dimen/ds50"
         android:layout_marginBottom="150dp"
-        android:src="@drawable/ic_launcher" />
+        android:src="@drawable/icon_write_add" />
 
 </RelativeLayout>
