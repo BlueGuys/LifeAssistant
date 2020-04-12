@@ -16,12 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="50dp"
             android:layout_centerHorizontal="true"
+            android:gravity="center"
             android:orientation="horizontal">
-
-            <ImageView
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:src="@drawable/city" />
 
             <TextView
                 android:id="@+id/fragment_home_city_name"
@@ -35,16 +31,16 @@
 
         <FrameLayout
             android:id="@+id/fragment_home_info_tips_layout"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
             android:layout_width="wrap_content"
-            android:layout_height="50dp">
-        <ImageView
-            android:layout_gravity="center_vertical"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:src="@drawable/home_tip"
-            />
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="15dp">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/home_tip" />
         </FrameLayout>
 
         <FrameLayout
@@ -157,12 +153,12 @@
         <ListView
             android:id="@+id/fragment_home_memo_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent" />
 
-<!--        <androidx.recyclerview.widget.RecyclerView-->
-<!--            android:id="@+id/fragment_home_memo_list"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"/>-->
+        <!--        <androidx.recyclerview.widget.RecyclerView-->
+        <!--            android:id="@+id/fragment_home_memo_list"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="match_parent"/>-->
 
 
     </LinearLayout>

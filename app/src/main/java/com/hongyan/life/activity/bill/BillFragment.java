@@ -32,7 +32,7 @@ public class BillFragment extends BaseFragment {
     private ListView listView;
     private BillAdapter mAdapter;
     private ImageView btnAdd;
-    private TextView btnAnalysis;
+    private ImageView btnAnalysis;
     private LinearLayout layoutTime;
     private TextView tvYear;
     private TextView tvMonth;
@@ -106,6 +106,7 @@ public class BillFragment extends BaseFragment {
             record.setCategory(category);
             record.setRemark(remark);
             record.setType(type);
+            record.setTimeStap(System.currentTimeMillis());
             BillUtils.addRecord(record);
             notifyData();
         }

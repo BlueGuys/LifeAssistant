@@ -119,9 +119,8 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         cityPicker.setOnCityItemClickListener(new OnCityItemClickListener() {
             @Override
             public void onSelected(ProvinceBean province, CityBean city, DistrictBean district) {
-                weatherCityName.setText("城市选择结果：\n" + province.getName() + "(" + province.getId() + ")\n"
-                        + city.getName() + "(" + city.getId() + ")\n"
-                        + district.getName() + "(" + district.getId() + ")");
+                weatherCityName.setText(city.getName());
+                requestWeather(city.getName());
             }
 
             @Override

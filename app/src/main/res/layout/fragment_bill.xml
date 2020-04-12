@@ -27,17 +27,15 @@
                     android:textColor="@color/white"
                     android:textSize="20sp" />
 
-                <TextView
+                <ImageView
                     android:id="@+id/btn_analysis"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/ds40"
+                    android:layout_height="@dimen/ds40"
                     android:layout_alignParentEnd="true"
                     android:layout_centerInParent="true"
                     android:layout_centerVertical="true"
                     android:layout_marginRight="@dimen/ds50"
-                    android:text="图表"
-                    android:textColor="@color/white"
-                    android:textSize="17sp" />
+                    android:src="@drawable/icon_chart" />
 
             </RelativeLayout>
 
@@ -162,11 +160,11 @@
 
     <ImageView
         android:id="@+id/btn_add"
-        android:layout_width="@dimen/ds100"
-        android:layout_height="@dimen/ds100"
+        android:layout_width="@dimen/ds140"
+        android:layout_height="@dimen/ds140"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginRight="@dimen/ds50"
+        android:layout_marginRight="@dimen/ds30"
         android:layout_marginBottom="150dp"
         android:src="@drawable/icon_write_add" />
 
