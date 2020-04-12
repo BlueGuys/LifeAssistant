@@ -84,7 +84,7 @@ public class BillUtils {
      */
     public static List<Record> getRecordList(int type) {
         RecordDao recordDao = MyApplication.getDaoSession().getRecordDao();
-        List<Record> list = recordDao.queryBuilder().where(RecordDao.Properties.Type.eq(type)).list();
+        List<Record> list = recordDao.queryBuilder().where(RecordDao.Properties.Type.eq(type)).orderDesc(RecordDao.Properties.TimeStap).list();
         return list;
     }
 
@@ -99,6 +99,7 @@ public class BillUtils {
         RecordDao recordDao = MyApplication.getDaoSession().getRecordDao();
         List<Record> list = recordDao.queryBuilder().
                 where(RecordDao.Properties.Type.eq(type), RecordDao.Properties.TimeStap.between(startTime, endTime))
+                .orderDesc(RecordDao.Properties.TimeStap)
                 .list();
         return list;
     }
@@ -115,6 +116,7 @@ public class BillUtils {
         RecordDao recordDao = MyApplication.getDaoSession().getRecordDao();
         List<Record> list = recordDao.queryBuilder().
                 where(RecordDao.Properties.Type.eq(type), RecordDao.Properties.TimeStap.between(startTime, endTime))
+                .orderDesc(RecordDao.Properties.TimeStap)
                 .list();
         return list;
     }
@@ -147,6 +149,7 @@ public class BillUtils {
         RecordDao recordDao = MyApplication.getDaoSession().getRecordDao();
         List<Record> list = recordDao.queryBuilder().
                 where(RecordDao.Properties.Type.eq(type), RecordDao.Properties.TimeStap.between(startTime, endTime))
+                .orderDesc(RecordDao.Properties.TimeStap)
                 .list();
         return list;
     }
@@ -178,12 +181,16 @@ public class BillUtils {
     }
 
     public static List<Record> getMonthAll(String montStr) throws ParseException {
-        List<Record> records = new ArrayList<>();
-        List<Record> recordListMonth1 = getRecordListMonth(1, montStr);
-        List<Record> recordListMonth2 = getRecordListMonth(2, montStr);
-        records.addAll(recordListMonth1);
-        records.addAll(recordListMonth2);
-        return records;
+        Date parse = yyyyMM.parse(montStr);
+        long startTime = DateUtil.getDayStartTime(parse).getTime();
+        Date nextMonthDate = DateUtil.getNextMonthDate(parse);
+        long endTime = DateUtil.getDayStartTime(nextMonthDate).getTime();
+        RecordDao recordDao = MyApplication.getDaoSession().getRecordDao();
+        List<Record> list = recordDao.queryBuilder().
+                where( RecordDao.Properties.TimeStap.between(startTime, endTime))
+                .orderDesc(RecordDao.Properties.TimeStap)
+                .list();
+        return list;
     }
 
     public static List<Record> getAll() {
