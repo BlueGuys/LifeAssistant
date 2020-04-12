@@ -315,7 +315,9 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
             if (resultCode == 1) {//添加成功
                 long id = data.getLongExtra("id", 0);
                 String content = data.getStringExtra("content");
+                String title = data.getStringExtra("title");
                 Memo memo = new Memo();
+                memo.setTitle(title);
                 memo.setTimestamp(System.currentTimeMillis());
                 if (id > 0) {
                     memo.setId(id);
