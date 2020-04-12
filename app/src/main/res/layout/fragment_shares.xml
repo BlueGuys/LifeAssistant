@@ -26,6 +26,7 @@
         android:orientation="horizontal">
 
         <EditText
+            android:hint="请输入股票代码"
             android:id="@+id/edit_input"
             android:layout_width="0dp"
             android:layout_height="@dimen/ds100"
