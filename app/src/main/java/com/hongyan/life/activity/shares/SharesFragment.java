@@ -57,9 +57,10 @@ public class SharesFragment extends BaseFragment {
 
     private void search(String str) {
         String dataUrl = baseUrl+str;
+        Log.e("test", "dataurl:"+ dataUrl);
         Map<String, Object> parameterList = new LinkedHashMap<>();
 //        parameterList.put("app_type", 1);
-        LFHttpRequestUtils.postSyn(dataUrl, parameterList, new LFNetworkCallback() {
+        LFHttpRequestUtils.getSyn(dataUrl, new LFNetworkCallback() {
             @Override
             public void completed(final String response) {
                 getActivity().runOnUiThread(new Runnable() {
@@ -67,7 +68,7 @@ public class SharesFragment extends BaseFragment {
                     public void run() {
                         try {
                             String json = response;
-                            Log.e("TEST",json);
+                            Log.e("test",json);
                             title.setText(json);
 
 
@@ -79,6 +80,7 @@ public class SharesFragment extends BaseFragment {
 
             @Override
             public void failed(int httpStatusCode, String error) {
+                Log.e("test",error);
             }
         });
 
