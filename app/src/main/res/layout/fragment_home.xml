@@ -37,10 +37,10 @@
             android:layout_marginRight="15dp">
 
             <ImageView
-                android:layout_width="25dp"
-                android:layout_height="25dp"
+                android:layout_width="@dimen/ds40"
+                android:layout_height="@dimen/ds40"
                 android:layout_gravity="center_vertical"
-                android:src="@drawable/home_tip" />
+                android:src="@drawable/icon_more" />
         </FrameLayout>
 
         <FrameLayout
