@@ -161,6 +161,10 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     }
 
     private void requestWeather(String name) {
+        if (name == null || name.trim().length() == 0) {
+            return;
+        }
+        name = name.replace("市", "");
         String url = "http://www.tianqiapi.com/api?version=v6&appid=45324354&appsecret=lw9iMb8d";
         try {
             url += "&city=" + name;
