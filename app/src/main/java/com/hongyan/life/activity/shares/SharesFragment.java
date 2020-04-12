@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.hongyan.life.R;
@@ -108,8 +109,18 @@ public class SharesFragment extends BaseFragment {
             }
 
             @Override
-            public void failed(int httpStatusCode, String error) {
+            public void failed(final int httpStatusCode, String error) {
                 Log.e("test",error);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (httpStatusCode == 404){
+                            Toast.makeText(getActivity(),"网络连接失败！",Toast.LENGTH_LONG).show();
+                        }else{
+                            Toast.makeText(getActivity(),"请求数据失败，请检查股票代码！",Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
             }
         });
 
