@@ -23,12 +23,7 @@
         <activity
             android:name=".activity.MainActivity"
             android:theme="@style/ActivityTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <action android:name="android.intent.action.VIEW" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.bill.AddRecordActivity"
@@ -43,6 +38,17 @@
             android:name=".activity.device.DeviceInfoActivity"
             android:theme="@style/ActivityTheme" >
 
+        </activity>
+
+        <activity
+            android:name=".activity.test.TestActivity"
+            android:theme="@style/ActivityTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
     </application>
 
