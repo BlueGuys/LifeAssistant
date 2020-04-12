@@ -110,4 +110,23 @@ public class Category {
         return "";
     }
 
+    /**
+     * 1支出 2收入
+     * @param id
+     * @return
+     */
+    public static int getRecordType(int id) {
+        for (Category c1 : incomeCategoryList) {
+            if (c1.type == id) {
+                return 2;
+            }
+        }
+        for (Category c2 : expandCategoryList) {
+            if (c2.type == id) {
+                return 1;
+            }
+        }
+        return 1;
+    }
+
 }

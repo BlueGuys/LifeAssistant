@@ -3,9 +3,8 @@ package com.hongyan.life.activity.bill;
 import com.hongyan.life.utils.DateUtils;
 
 import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Id;
 import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.annotation.Transient;
+import org.greenrobot.greendao.annotation.Id;
 
 import java.util.Calendar;
 import java.util.Date;

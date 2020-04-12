@@ -104,13 +104,12 @@ public class AddRecordActivity extends BaseActivity {
 
     private void commit(String amount) {
         String remark = "猫猫猫";
-        int type = 1;
 
         Intent intent = new Intent();
         intent.putExtra("amount", amount);
         intent.putExtra("category", categoryID);
         intent.putExtra("remark", remark);
-        intent.putExtra("type", type);
+        intent.putExtra("type", Category.getRecordType(categoryID));
         setResult(300, intent);
         finish();
     }
