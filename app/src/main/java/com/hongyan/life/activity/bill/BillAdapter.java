@@ -2,6 +2,7 @@ package com.hongyan.life.activity.bill;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +77,16 @@ public class BillAdapter extends BaseAdapter {
         TextView tvAmount = convertView.findViewById(R.id.tv_amount);
         imageView.setImageResource(Category.getIconById(record.category));
         tvTitle.setText(Category.getDescById(record.category));
-        tvAmount.setText(String.valueOf(record.amount));
+
+        int type = Category.getRecordType(record.category);
+        if (type == 1) {
+            tvAmount.setText("-" + record.amount);
+            tvAmount.setTextColor(Color.parseColor("#CD0000"));
+        }
+        if (type == 2) {
+            tvAmount.setText("+" + record.amount);
+            tvAmount.setTextColor(Color.parseColor("#2ab21e"));
+        }
         return convertView;
     }
 }
