@@ -1,38 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:paddingLeft="15dp"
-    android:paddingRight="15dp"
-    android:paddingTop="7dp"
-    android:paddingBottom="7dp"
-    >
-
+    android:layout_height="@dimen/ds120"
+    android:gravity="center_vertical|left"
+    android:paddingLeft="@dimen/ds40"
+    android:paddingRight="@dimen/ds40">
 
     <TextView
-        android:id="@+id/item_memo_content"
-        android:textSize="16sp"
-        android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxLines="2"
-        android:ellipsize="end"
-        />
-
-    <TextView
-        android:id="@+id/item_memo_time"
-        android:layout_marginRight="15dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@id/item_memo_content"
+        android:id="@+id/item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/ds10"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="标题"
         android:textColor="@color/black"
-        android:textSize="14sp"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/item_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_title"
+        android:layout_marginRight="@dimen/ds10"
         android:text="00-00 00:00"
-        />
+        android:textColor="#444444"
+        android:textSize="12sp" />
 
-
-
+    <TextView
+        android:id="@+id/item_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/item_title"
+        android:layout_toRightOf="@id/item_time"
+        android:lines="1"
+        android:text="我是一段描述"
+        android:textColor="#555555"
+        android:textSize="12sp" />
 
 </RelativeLayout>

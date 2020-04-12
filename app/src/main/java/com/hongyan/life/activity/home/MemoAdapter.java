@@ -47,24 +47,23 @@ public class MemoAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         Memo memo = memos.get(position);
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_memo, parent,false);
-
-
+            convertView = LayoutInflater.from(context).inflate(R.layout.item_memo, parent, false);
         }
-        TextView content = convertView.findViewById(R.id.item_memo_content);
-        content.setText(memo.getContent());
-        TextView timeTv = convertView.findViewById(R.id.item_memo_time);
+        TextView tvTitle = convertView.findViewById(R.id.item_title);
+        TextView timeTv = convertView.findViewById(R.id.item_time);
+        TextView tvContent = convertView.findViewById(R.id.item_content);
+        tvTitle.setText(memo.getContent());
+        tvContent.setText(memo.getContent());
+
         long timestamp = memo.getTimestamp();
         Date date = new Date(timestamp);
         String format = null;
         try {
-            format = DateUtils.dateToString(date,DateUtils.LOCALE_DATE_FORMAT);
+            format = DateUtils.dateToString(date, DateUtils.MONTH_DAY_HHmm);
             timeTv.setText(format);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-
         return convertView;
     }
 

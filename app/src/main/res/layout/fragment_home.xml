@@ -140,12 +140,12 @@
 
             <ImageView
                 android:id="@+id/fragment_home_memo_add"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="@dimen/ds50"
+                android:layout_height="@dimen/ds50"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
                 android:layout_marginRight="15dp"
-                android:src="@drawable/edit" />
+                android:src="@drawable/icon_add_things" />
 
         </RelativeLayout>
 
@@ -153,13 +153,8 @@
         <ListView
             android:id="@+id/fragment_home_memo_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:id="@+id/fragment_home_memo_list"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="match_parent"/>-->
-
+            android:layout_height="match_parent"
+            android:listSelector="@android:color/transparent" />
 
     </LinearLayout>
 
