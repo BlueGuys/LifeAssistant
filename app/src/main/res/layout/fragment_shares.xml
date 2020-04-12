@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/darker_gray"
+    android:background="@color/c_bg_a"
     android:orientation="vertical">
 
     <TextView
@@ -26,12 +26,13 @@
         android:orientation="horizontal">
 
         <EditText
-            android:hint="请输入股票代码"
+            android:hint="股票代码 例:000001"
             android:id="@+id/edit_input"
             android:layout_width="0dp"
             android:layout_height="@dimen/ds100"
             android:layout_weight="1"
             android:background="@null"
+            android:textSize="16sp"
             android:paddingLeft="@dimen/ds30"
             android:textCursorDrawable="@drawable/drawable_cusor" />
 
