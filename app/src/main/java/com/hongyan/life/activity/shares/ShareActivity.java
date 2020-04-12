@@ -95,6 +95,11 @@ public class ShareActivity extends BaseActivity {
                                 today_max.setVisibility(View.GONE);
                                 return;
                             }
+                            kaipan.setVisibility(View.VISIBLE);
+                            dangqian.setVisibility(View.VISIBLE);
+                            today_min.setVisibility(View.VISIBLE);
+                            today_max.setVisibility(View.VISIBLE);
+
                             String[] split = data.split(",");
                             kaipan.setText("今日开盘价："+split[1]);
                             dangqian.setText("当前价格："+split[3]);
