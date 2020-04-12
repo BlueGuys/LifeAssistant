@@ -107,7 +107,7 @@ public class Record {
 
     public String getDateTime(){
         try {
-            return DateUtils.dateToString(new Date(timeStap),DateUtils.yyyyMMDD);
+            return DateUtils.dateToString(new Date(timeStap),DateUtils.MONTH_DAY_HHmm);
         } catch (Exception e) {
             e.printStackTrace();
         }
