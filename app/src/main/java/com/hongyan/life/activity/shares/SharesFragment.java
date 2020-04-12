@@ -91,8 +91,10 @@ public class SharesFragment extends BaseFragment {
                             String data = response;
 //                            data = URLEncoder.encode(data,"GBK");
                             data=data.substring(data.indexOf("\"")+1,data.lastIndexOf("\""));
-                            String gbkData = new String(data.getBytes(),"GBK");
                             Log.e("test", "DATA:"+ data);
+                            if (data.length()<1){
+                                Toast.makeText(getActivity(),"请求数据失败，请检查股票代码！",Toast.LENGTH_LONG).show();
+                            }
                             String[] split = data.split(",");
                             kaipan.setText("今日开盘价："+split[1]);
                             dangqian.setText("当前价格："+split[3]);
