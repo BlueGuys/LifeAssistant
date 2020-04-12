@@ -137,8 +137,8 @@ public class BillFragment extends BaseFragment {
         float income = 0;
         float expand = 0;
         try {
-            income = BillUtils.getMonthRecord(1, monthStr);
-            expand = BillUtils.getMonthRecord(2, monthStr);
+            income = BillUtils.getMonthRecord(2, monthStr);
+            expand = BillUtils.getMonthRecord(1, monthStr);
         } catch (Exception e) {
             e.printStackTrace();
         }

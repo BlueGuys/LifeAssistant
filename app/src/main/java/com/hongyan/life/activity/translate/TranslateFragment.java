@@ -76,28 +76,35 @@ public class TranslateFragment extends BaseFragment {
         parameterList.put("app_type", 1);
         LFHttpRequestUtils.postSyn(url, parameterList, new LFNetworkCallback() {
             @Override
-            public void completed(String response) {
-                TranslateBean bean = GsonUtils.gsonResolve(response, TranslateBean.class);
-                tvResultA.setText(bean.query);
-                tvResultA1.setText(Arrays.toString(bean.translation));
-                tvResultB1.setText(bean.basic.phonetic);
-                tvResultC1.setText(Arrays.toString(bean.basic.explains));
+            public void completed(final String response) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        try {
+                            TranslateBean bean = GsonUtils.gsonResolve(response, TranslateBean.class);
+                            tvResultA.setText(bean.query);
+                            tvResultA1.setText(Arrays.toString(bean.translation));
+                            tvResultB1.setText(bean.basic.phonetic);
+                            tvResultC1.setText(Arrays.toString(bean.basic.explains));
 
-                StringBuilder builder = new StringBuilder();
-                ArrayList<TranslateBean.Web> web = bean.web;
-                for(TranslateBean.Web w: web){
-                    builder.append("·");
-                    builder.append(w.key);
-                    builder.append("\n");
-                    builder.append(Arrays.toString(w.value));
-                    builder.append("\n");
-                }
-                tvResultD1.setText(builder.toString());
+                            StringBuilder builder = new StringBuilder();
+                            ArrayList<TranslateBean.Web> web = bean.web;
+                            for(TranslateBean.Web w: web){
+                                builder.append("·");
+                                builder.append(w.key);
+                                builder.append("\n");
+                                builder.append(Arrays.toString(w.value));
+                                builder.append("\n");
+                            }
+                            tvResultD1.setText(builder.toString());
+                        } catch (Exception e) {
+                        }
+                    }
+                });
             }
 
             @Override
             public void failed(int httpStatusCode, String error) {
-//                tvResultA.setText(error);
                 String errorMsg = "网络错误  [httpStatusCode" + httpStatusCode + "   error:" + error + "]";
             }
         });
