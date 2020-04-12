@@ -33,6 +33,7 @@ public final class DateUtils {
      * 日期类型 *
      */
     public static final String yyyyMMDD = "yyyy-MM-dd";
+    public static final String yyyyMMD = "yyyy MM-dd";
     public static final String yyyyMMddHHmmss = "yyyy-MM-dd HH:mm:ss";
     public static final String HHmmss = "HH:mm:ss";
     public static final String LOCALE_DATE_FORMAT = "yyyy年M月d日 HH:mm:ss";

@@ -196,7 +196,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                             temp12Tv.setText(weatherNow.getTem1() + "/" + weatherNow.getTem2());
                             weatherLayout.setBackgroundColor(getWeatherBackImg(weatherNow.getWea_img()));
                             Date date = new Date();
-                            String ss = DateUtils.formatDate(date, DateUtils.MONTH_DAY_HHmm);
+                            String ss = DateUtils.formatDate(date, DateUtils.yyyyMMD);
                             tvTianqiTime.setText(ss);
                         } catch (Exception e) {
                         }
