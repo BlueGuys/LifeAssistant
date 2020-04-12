@@ -31,8 +31,6 @@ import com.lljjcoder.bean.DistrictBean;
 import com.lljjcoder.bean.ProvinceBean;
 import com.lljjcoder.style.cityjd.JDCityConfig;
 import com.lljjcoder.style.cityjd.JDCityPicker;
-import com.lljjcoder.style.citylist.CityListSelectActivity;
-import com.lljjcoder.style.citylist.bean.CityInfoBean;
 
 import java.net.URLEncoder;
 import java.util.ArrayList;
@@ -40,16 +38,11 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-import static android.app.Activity.RESULT_OK;
-
 public class HomeFragment extends BaseFragment implements AdapterView.OnItemClickListener, AdapterView.OnItemLongClickListener {
 
     private static final String TAG = "HomeFragment";
 
-    private static final String baseWeatherUrl = "http://www.tianqiapi.com/api?version=v6&appid=45324354&appsecret=lw9iMb8d";
-
     private View view;
-    private LinearLayout roorLayout;
 
     RelativeLayout weatherLayout;
     LinearLayout weatherCityLayout;
@@ -69,7 +62,6 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (view == null) {
             view = inflater.inflate(R.layout.fragment_home, container, false);
-            roorLayout = view.findViewById(R.id.linearLayout);
             initView();
         }
         return view;
@@ -151,13 +143,6 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         getAllMemos();
     }
 
-
-//    @Override
-//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-//        super.onActivityCreated(savedInstanceState);
-//        getAllMemos();
-//    }
-
     private void getAllMemos() {
         MemoDao memoDao = MyApplication.getDaoSession().getMemoDao();
         List<Memo> qmemos = memoDao.loadAll();
@@ -168,7 +153,6 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
         }
     }
 
-
     @Override
     public void onResume() {
         super.onResume();
@@ -177,13 +161,13 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     }
 
     private void requestWeather(String name) {
-        String url = baseWeatherUrl;
+        String url = "http://www.tianqiapi.com/api?version=v6&appid=45324354&appsecret=lw9iMb8d";
         try {
-            url = baseWeatherUrl + "&city=" + URLEncoder.encode(name, "UTF8");
+            url += "&city=" + name;
+            Log.e("天气0", url);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        Log.d(TAG, "url:" + url);
         Map<String, Object> parameterList = new LinkedHashMap<>();
         parameterList.put("app_type", 1);
 
@@ -195,7 +179,12 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                     public void run() {
                         try {
                             String json = response;
+
                             WeatherNow weatherNow = GsonUtils.gsonResolve(json, WeatherNow.class);
+
+                            Log.e("天气", response);
+                            Log.e("天气1", weatherNow.getCity());
+
                             String wea_img = weatherNow.getWea_img();
                             weatherImg.setImageResource(getImageIdByWea(wea_img));
                             tipsTv.setText(weatherNow.getAir_tips());
@@ -317,7 +306,6 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
         Log.d(TAG, "onActivityResult");
         if (data == null) {
             return;
@@ -334,21 +322,6 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                 memo.setContent(content);
                 saveMemo(memo);
 
-            }
-        }
-        if (requestCode == CityListSelectActivity.CITY_SELECT_RESULT_FRAG) {
-            if (resultCode == RESULT_OK) {
-                if (data == null) {
-                    return;
-                }
-                Bundle bundle = data.getExtras();
-
-                CityInfoBean cityInfoBean = (CityInfoBean) bundle.getParcelable("cityinfo");
-
-                if (null == cityInfoBean) {
-                    return;
-                }
-                Log.e("sss", "城市名:" + cityInfoBean.getName());
             }
         }
     }
