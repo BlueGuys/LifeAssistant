@@ -31,7 +31,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:src="@drawable/icon_arrow_back" />
+            android:src="@drawable/icon_done"
+            android:layout_marginRight="@dimen/ds20"/>
 
     </RelativeLayout>
 
