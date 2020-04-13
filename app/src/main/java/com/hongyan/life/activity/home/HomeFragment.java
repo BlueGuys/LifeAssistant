@@ -192,7 +192,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
                             String wea_img = weatherNow.getWea_img();
                             weatherImg.setImageResource(getImageIdByWea(wea_img));
                             tipsTv.setText(weatherNow.getAir_tips());
-                            airLevelTv.setText(weatherNow.getAir_level());
+                            airLevelTv.setText("空气"+weatherNow.getAir_level());
                             tempTv.setText(weatherNow.getTem());
                             temp12Tv.setText(weatherNow.getTem1() + "/" + weatherNow.getTem2());
                             weatherLayout.setBackgroundColor(getWeatherBackImg(weatherNow.getWea_img()));
