@@ -48,7 +48,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
     TextView weatherCityName;
 
     private Button button;
-    private ImageView weatherImg;
+    private ImageView weatherImg, image_more;
     private TextView tipsTv, airLevelTv, tempTv, temp12Tv, tvTianqiTime;
 
     private ImageView memoAdd;
@@ -84,6 +84,7 @@ public class HomeFragment extends BaseFragment implements AdapterView.OnItemClic
 
     private void initWeather() {
         weatherLayout = view.findViewById(R.id.fragment_home_weather_layout);
+        image_more = view.findViewById(R.id.image_more);
         weatherCityName = view.findViewById(R.id.fragment_home_city_name);
         weatherImg = view.findViewById(R.id.fragment_home_weather_img);
         tipsTv = view.findViewById(R.id.fragment_home_weather_tips);

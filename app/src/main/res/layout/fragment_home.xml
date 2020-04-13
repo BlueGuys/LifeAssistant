@@ -8,8 +8,35 @@
     <RelativeLayout
         android:id="@+id/fragment_home_weather_layout"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="190dp"
         android:background="@color/royalblue">
+
+        <LinearLayout
+            android:id="@+id/ll_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:paddingTop="@dimen/ds30"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/fragment_home_city_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/ds10"
+                android:gravity="center"
+                android:text="北京"
+                android:textColor="@color/home_weather_text"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/image_more"
+                android:layout_width="@dimen/ds20"
+                android:layout_height="@dimen/ds20"
+                android:src="@drawable/icon_sanjiao" />
+        </LinearLayout>
 
 
         <LinearLayout
@@ -30,7 +57,7 @@
                 <TextView
                     android:id="@+id/fragment_home_weather_temp"
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
+                    android:layout_height="wrap_content"
                     android:gravity="center"
                     android:textColor="@color/home_weather_text"
                     android:textSize="60sp" />
@@ -43,17 +70,6 @@
                     android:textSize="34sp" />
             </LinearLayout>
 
-
-            <TextView
-                android:id="@+id/fragment_home_weather_temp12"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/ds20"
-                android:gravity="center"
-                android:text="0℃/7℃"
-                android:textColor="@color/home_weather_text"
-                android:textSize="18sp" />
-
             <View
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
@@ -65,14 +81,13 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/fragment_home_city_name"
+                    android:id="@+id/fragment_home_weather_temp12"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="@dimen/ds30"
                     android:gravity="center"
-                    android:text="北京"
+                    android:text="0℃/7℃"
                     android:textColor="@color/home_weather_text"
-                    android:textSize="15sp" />
+                    android:textSize="18sp" />
 
                 <TextView
                     android:id="@+id/fragment_home_weather_air_level"
@@ -86,9 +101,9 @@
 
             <TextView
                 android:id="@+id/tv_tianqi_time"
+                android:layout_marginTop="@dimen/ds20"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/ds4"
                 android:layout_marginRight="@dimen/ds30"
                 android:gravity="center"
                 android:textColor="@color/home_weather_text"
@@ -114,9 +129,7 @@
             android:id="@+id/fragment_home_weather_img"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/ds140"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/ds60"
+            android:layout_centerInParent="true"
             android:src="@drawable/qing" />
 
         <TextView
