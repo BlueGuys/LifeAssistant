@@ -14,20 +14,20 @@
         android:textSize="18sp"
         android:layout_marginTop="@dimen/ds20"/>
 
-
     <TextView
         android:id="@+id/fragment_calc_expression"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/ds120"
+        android:layout_height="@dimen/ds100"
         android:layout_above="@+id/fragment_calc_btnslayout"
         android:layout_marginBottom="25dp"
         android:background="@color/c_bg_a"
-        android:paddingLeft="@dimen/ds30"
-        android:paddingRight="@dimen/ds30"
+        android:paddingLeft="@dimen/ds20"
+        android:paddingRight="@dimen/ds20"
         android:text=""
         android:textColor="@color/black"
-        android:gravity="right"
-        android:textSize="37sp"
+        android:lines="1"
+        android:gravity="right|center_vertical"
+        android:textSize="25sp"
         android:layout_margin="@dimen/ds30"/>
 
     <LinearLayout
